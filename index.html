@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rangel Lawncare and Landscaping</title>
+<title>GreenPath Landscaping</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -17,20 +17,34 @@ body{font-family:'Lato',sans-serif;color:var(--text-dark);overflow-x:hidden;back
 nav,.hero,.page-body,.grass-footer{position:relative;z-index:1;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
-  justify-content:space-between;padding:1rem 3rem;
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:flex-start;
+  justify-content:space-between;padding:0.85rem 3rem 0;
   background:rgba(8,22,10,0.95);backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(255,255,255,0.07);}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;letter-spacing:.03em;}
+  border-bottom:none;
+  /* tall enough to contain links + grass blades */
+  height:90px;
+  overflow:hidden;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;letter-spacing:.03em;line-height:1;margin-top:0.1rem;}
 .nav-logo span{color:var(--gold);}
 nav ul{list-style:none;display:flex;gap:2rem;}
 nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;
   letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
 nav ul a:hover{color:var(--gold);}
 
+/* NAV GRASS — sits at the bottom of the nav, blades grow upward */
+.nav-grass{
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:52px;
+  pointer-events:none;
+  line-height:0;
+  overflow:visible;
+}
+.nav-grass svg{display:block;width:100%;}
+
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:8rem 2rem 4rem;text-align:center;
+  justify-content:center;padding:10rem 2rem 4rem;text-align:center;
   background:linear-gradient(to bottom,rgba(6,16,8,.88) 0%,rgba(12,32,16,.6) 55%,rgba(18,44,22,.28) 100%);}
 .hero-eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
   margin-bottom:1.1rem;animation:fadeUp .8s .1s both;}
@@ -130,6 +144,73 @@ nav ul a:hover{color:var(--gold);}
 .footer-bottom{background:#06100a;text-align:center;padding:1.25rem;font-size:.78rem;color:rgba(255,255,255,.25);}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE  (≤ 640px)
+══════════════════════════════════════ */
+@media(max-width:640px){
+
+  /* Nav — stack logo above links, centre everything */
+  nav{
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:.75rem 1.25rem 0;
+    height:auto;
+    min-height:80px;
+  }
+  .nav-logo{font-size:1.25rem;text-align:center;margin-bottom:.4rem;}
+  nav ul{gap:1.25rem;flex-wrap:wrap;justify-content:center;}
+  nav ul a{font-size:.72rem;letter-spacing:.08em;}
+
+  /* Nav grass — keep it full width below the links */
+  .nav-grass{position:relative;bottom:auto;margin-top:.25rem;height:38px;}
+  .nav-grass svg{height:38px;}
+
+  /* Hero — more breathing room below taller nav */
+  .hero{padding:7rem 1.25rem 3rem;}
+  .hero-title{font-size:clamp(2.2rem,10vw,3.2rem);}
+  .hero-subtitle{font-size:1rem;}
+  .btn-primary{padding:.8rem 2rem;font-size:.76rem;}
+
+  /* Glass sections — full width, tighter padding */
+  .glass-section{padding:2.5rem 1rem;}
+  .glass-panel,
+  .glass-panel-dark{padding:1.75rem 1.25rem;border-radius:8px;}
+
+  /* Section text */
+  .section-title{font-size:1.7rem;}
+  .section-desc{font-size:.95rem;margin-bottom:2rem;}
+
+  /* Services — single column, centered */
+  .services-grid{
+    grid-template-columns:1fr;
+    justify-items:center;
+    max-width:420px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .service-card{padding:1.4rem;width:100%;text-align:center;}
+  .service-icon{display:block;}
+  .service-price{text-align:center;}
+
+  /* Gallery — single column */
+  .gallery-grid{grid-template-columns:1fr;}
+
+  /* Reviews — single column */
+  .reviews-grid{grid-template-columns:1fr;}
+  .review-summary{flex-direction:column;gap:1rem;padding:1.25rem;}
+
+  /* Contact cards — single column */
+  .contact-cards{grid-template-columns:1fr;max-width:100%;}
+  .contact-value{font-size:.95rem!important;}
+
+  /* Footer */
+  .footer-body{padding:2rem 1.25rem 0;}
+  .footer-content{flex-direction:column;gap:1.5rem;padding-bottom:2rem;}
+  .footer-links h4{margin-top:.25rem;}
+  .grass-scene-wrap{height:160px;}
+}
 </style>
 </head>
 <body>
@@ -139,13 +220,171 @@ nav ul a:hover{color:var(--gold);}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Rangel<span> Lawncare and Landscaping</span></div>
+  <div class="nav-logo">Green<span>Path</span></div>
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Our Work</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+
+  <!-- Grass blades — footer-style, growing downward from nav bottom edge -->
+  <div class="nav-grass">
+    <!--
+      viewBox: 0 0 1440 52. y=52 is the nav bottom edge (blade roots).
+      Blades grow upward (decreasing y). Pivots set to y=52.
+      Two rows: back (shorter/darker) + front (taller/brighter).
+    -->
+    <svg viewBox="0 0 1440 52" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" style="height:52px;display:block;overflow:visible;">
+      <defs>
+        <linearGradient id="ngA" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#122e16"/>
+          <stop offset="50%" stop-color="#267030"/>
+          <stop offset="85%" stop-color="#389040"/>
+          <stop offset="100%" stop-color="#58c060"/>
+        </linearGradient>
+        <linearGradient id="ngB" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#163618"/>
+          <stop offset="50%" stop-color="#2e7836"/>
+          <stop offset="85%" stop-color="#44a84c"/>
+          <stop offset="100%" stop-color="#68d070"/>
+        </linearGradient>
+        <linearGradient id="ngC" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#0e2410"/>
+          <stop offset="50%" stop-color="#205c26"/>
+          <stop offset="85%" stop-color="#2e7836"/>
+          <stop offset="100%" stop-color="#4aac52"/>
+        </linearGradient>
+        <linearGradient id="ngD" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#1a4020"/>
+          <stop offset="50%" stop-color="#34883c"/>
+          <stop offset="85%" stop-color="#4ab054"/>
+          <stop offset="100%" stop-color="#70dc7a"/>
+        </linearGradient>
+      </defs>
+
+      <!-- ── BACK ROW — shorter, darker, roots at y=52 ── -->
+      <g>
+        <path fill="url(#ngC)" d="M27,52 C25,45 21,38 18,32 C24,38 30,45 31,52Z"/>
+        <path fill="url(#ngC)" d="M35,52 C39,44 44,37 50,31 C52,38 50,45 46,52Z"/>
+        <path fill="url(#ngC)" d="M43,52 C40,44 35,38 31,32 C38,38 44,45 45,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,37,52;1.8,37,52;-1.5,37,52" dur="4.1s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M150,52 C148,45 144,38 141,32 C147,38 153,45 154,52Z"/>
+        <path fill="url(#ngC)" d="M160,52 C164,44 170,37 176,31 C178,38 176,45 172,52Z"/>
+        <path fill="url(#ngC)" d="M168,52 C165,44 160,38 156,32 C163,38 169,45 170,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.2,160,52;-2.0,160,52;1.2,160,52" dur="3.7s" begin="-2.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M315,52 C313,45 309,38 306,32 C312,38 318,45 319,52Z"/>
+        <path fill="url(#ngC)" d="M325,52 C329,44 335,37 341,31 C343,38 341,45 337,52Z"/>
+        <path fill="url(#ngC)" d="M333,52 C330,44 325,38 321,32 C328,38 334,45 335,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-0.8,325,52;1.5,325,52;-0.8,325,52" dur="4.6s" begin="-0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M487,52 C485,45 481,38 478,32 C484,38 490,45 491,52Z"/>
+        <path fill="url(#ngC)" d="M497,52 C501,44 507,37 513,31 C515,38 513,45 509,52Z"/>
+        <path fill="url(#ngC)" d="M505,52 C502,44 497,38 493,32 C500,38 506,45 507,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="2.0,497,52;-1.0,497,52;2.0,497,52" dur="3.4s" begin="-3.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M657,52 C655,45 651,38 648,32 C654,38 660,45 661,52Z"/>
+        <path fill="url(#ngC)" d="M667,52 C671,44 677,37 683,31 C685,38 683,45 679,52Z"/>
+        <path fill="url(#ngC)" d="M675,52 C672,44 667,38 663,32 C670,38 676,45 677,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.8,667,52;1.0,667,52;-1.8,667,52" dur="5.0s" begin="-1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M832,52 C830,45 826,38 823,32 C829,38 835,45 836,52Z"/>
+        <path fill="url(#ngC)" d="M842,52 C846,44 852,37 858,31 C860,38 858,45 854,52Z"/>
+        <path fill="url(#ngC)" d="M850,52 C847,44 842,38 838,32 C845,38 851,45 852,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="0.6,842,52;-1.8,842,52;0.6,842,52" dur="3.9s" begin="-0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M1002,52 C1000,45 996,38 993,32 C999,38 1005,45 1006,52Z"/>
+        <path fill="url(#ngC)" d="M1012,52 C1016,44 1022,37 1028,31 C1030,38 1028,45 1024,52Z"/>
+        <path fill="url(#ngC)" d="M1020,52 C1017,44 1012,38 1008,32 C1015,38 1021,45 1022,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.2,1012,52;1.8,1012,52;-1.2,1012,52" dur="4.3s" begin="-2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M1172,52 C1170,45 1166,38 1163,32 C1169,38 1175,45 1176,52Z"/>
+        <path fill="url(#ngC)" d="M1182,52 C1186,44 1192,37 1198,31 C1200,38 1198,45 1194,52Z"/>
+        <path fill="url(#ngC)" d="M1190,52 C1187,44 1182,38 1178,32 C1185,38 1191,45 1192,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.5,1182,52;-0.8,1182,52;1.5,1182,52" dur="3.6s" begin="-1.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngC)" d="M1345,52 C1343,45 1339,38 1336,32 C1342,38 1348,45 1349,52Z"/>
+        <path fill="url(#ngC)" d="M1355,52 C1359,44 1365,37 1371,31 C1373,38 1371,45 1367,52Z"/>
+        <path fill="url(#ngC)" d="M1363,52 C1360,44 1355,38 1351,32 C1358,38 1364,45 1365,52Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-2.0,1355,52;0.8,1355,52;-2.0,1355,52" dur="4.8s" begin="-3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+
+      <!-- ── FRONT ROW — taller, brighter, roots at y=52 ── -->
+      <g>
+        <path fill="url(#ngA)" d="M72,52 C68,42 60,30 52,18 C62,31 74,42 76,52Z"/>
+        <path fill="url(#ngA)" d="M86,52 C92,42 102,31 111,19 C114,32 110,43 105,52Z"/>
+        <path fill="url(#ngA)" d="M100,52 C95,41 88,30 82,19 C91,31 100,42 101,52Z"/>
+        <path fill="url(#ngB)" d="M64,52 C59,40 52,28 46,17 C54,30 63,41 64,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,86,52;2.0,86,52;-1.5,86,52" dur="3.2s" begin="-0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngA)" d="M232,52 C228,42 220,30 212,18 C222,31 234,42 236,52Z"/>
+        <path fill="url(#ngA)" d="M246,52 C252,42 262,31 271,19 C274,32 270,43 265,52Z"/>
+        <path fill="url(#ngA)" d="M260,52 C255,41 248,30 242,19 C251,31 260,42 261,52Z"/>
+        <path fill="url(#ngB)" d="M224,52 C219,40 212,28 206,17 C214,30 223,41 224,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.8,246,52;-1.5,246,52;1.8,246,52" dur="4.0s" begin="-2.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngD)" d="M402,52 C398,42 390,30 382,18 C392,31 404,42 406,52Z"/>
+        <path fill="url(#ngD)" d="M416,52 C422,42 432,31 441,19 C444,32 440,43 435,52Z"/>
+        <path fill="url(#ngD)" d="M430,52 C425,41 418,30 412,19 C421,31 430,42 431,52Z"/>
+        <path fill="url(#ngB)" d="M394,52 C389,40 382,28 376,17 C384,30 393,41 394,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.0,416,52;1.8,416,52;-1.0,416,52" dur="3.7s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngA)" d="M572,52 C568,42 560,30 552,18 C562,31 574,42 576,52Z"/>
+        <path fill="url(#ngA)" d="M586,52 C592,42 602,31 611,19 C614,32 610,43 605,52Z"/>
+        <path fill="url(#ngA)" d="M600,52 C595,41 588,30 582,19 C591,31 600,42 601,52Z"/>
+        <path fill="url(#ngB)" d="M564,52 C559,40 552,28 546,17 C554,30 563,41 564,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="2.0,586,52;-1.2,586,52;2.0,586,52" dur="2.9s" begin="-3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngD)" d="M742,52 C738,42 730,30 722,18 C732,31 744,42 746,52Z"/>
+        <path fill="url(#ngD)" d="M756,52 C762,42 772,31 781,19 C784,32 780,43 775,52Z"/>
+        <path fill="url(#ngD)" d="M770,52 C765,41 758,30 752,19 C761,31 770,42 771,52Z"/>
+        <path fill="url(#ngB)" d="M734,52 C729,40 722,28 716,17 C724,30 733,41 734,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.8,756,52;1.2,756,52;-1.8,756,52" dur="4.5s" begin="-0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngA)" d="M912,52 C908,42 900,30 892,18 C902,31 914,42 916,52Z"/>
+        <path fill="url(#ngA)" d="M926,52 C932,42 942,31 951,19 C954,32 950,43 945,52Z"/>
+        <path fill="url(#ngA)" d="M940,52 C935,41 928,30 922,19 C931,31 940,42 941,52Z"/>
+        <path fill="url(#ngB)" d="M904,52 C899,40 892,28 886,17 C894,30 903,41 904,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="0.8,926,52;-2.0,926,52;0.8,926,52" dur="3.5s" begin="-2.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngD)" d="M1077,52 C1073,42 1065,30 1057,18 C1067,31 1079,42 1081,52Z"/>
+        <path fill="url(#ngD)" d="M1091,52 C1097,42 1107,31 1116,19 C1119,32 1115,43 1110,52Z"/>
+        <path fill="url(#ngD)" d="M1105,52 C1100,41 1093,30 1087,19 C1096,31 1105,42 1106,52Z"/>
+        <path fill="url(#ngB)" d="M1069,52 C1064,40 1057,28 1051,17 C1059,30 1068,41 1069,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,1091,52;1.8,1091,52;-1.5,1091,52" dur="4.2s" begin="-1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngA)" d="M1247,52 C1243,42 1235,30 1227,18 C1237,31 1249,42 1251,52Z"/>
+        <path fill="url(#ngA)" d="M1261,52 C1267,42 1277,31 1286,19 C1289,32 1285,43 1280,52Z"/>
+        <path fill="url(#ngA)" d="M1275,52 C1270,41 1263,30 1257,19 C1266,31 1275,42 1276,52Z"/>
+        <path fill="url(#ngB)" d="M1239,52 C1234,40 1227,28 1221,17 C1229,30 1238,41 1239,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.6,1261,52;-1.0,1261,52;1.6,1261,52" dur="3.3s" begin="-2.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g>
+        <path fill="url(#ngD)" d="M1392,52 C1388,42 1380,30 1372,18 C1382,31 1394,42 1396,52Z"/>
+        <path fill="url(#ngD)" d="M1406,52 C1412,42 1422,31 1431,19 C1434,32 1430,43 1425,52Z"/>
+        <path fill="url(#ngD)" d="M1420,52 C1415,41 1408,30 1402,19 C1411,31 1420,42 1421,52Z"/>
+        <path fill="url(#ngB)" d="M1384,52 C1379,40 1372,28 1366,17 C1374,30 1383,41 1384,52Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-0.9,1406,52;2.0,1406,52;-0.9,1406,52" dur="4.7s" begin="-0.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+    </svg>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -216,7 +455,7 @@ nav ul a:hover{color:var(--gold);}
         </div>
       </div>
       <div class="reviews-grid">
-        <div class="review-card"><div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">"Rangel Lawncare and Landscaping completely transformed our backyard. The cobblestone patio they installed is absolutely stunning — better than anything we imagined. Professional, on time, and very fairly priced."</p><div class="reviewer"><div class="reviewer-avatar">JM</div><div><div class="reviewer-name">Jennifer M.</div><div class="reviewer-source">Google Review · 2 weeks ago</div></div></div></div>
+        <div class="review-card"><div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">"GreenPath completely transformed our backyard. The cobblestone patio they installed is absolutely stunning — better than anything we imagined. Professional, on time, and very fairly priced."</p><div class="reviewer"><div class="reviewer-avatar">JM</div><div><div class="reviewer-name">Jennifer M.</div><div class="reviewer-source">Google Review · 2 weeks ago</div></div></div></div>
         <div class="review-card"><div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">"We've used them for weekly lawn maintenance for two years now. Reliable, thorough, and our yard has never looked better. The crew is always respectful and the price is very reasonable."</p><div class="reviewer"><div class="reviewer-avatar">DT</div><div><div class="reviewer-name">David T.</div><div class="reviewer-source">Google Review · 1 month ago</div></div></div></div>
         <div class="review-card"><div class="stars"><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">"Had them design and install a full garden bed with seasonal plantings. The design was beautiful and they finished ahead of schedule. I've already referred them to three neighbors!"</p><div class="reviewer"><div class="reviewer-avatar">SR</div><div><div class="reviewer-name">Sandra R.</div><div class="reviewer-source">Google Review · 3 months ago</div></div></div></div>
       </div>
@@ -231,7 +470,7 @@ nav ul a:hover{color:var(--gold);}
       <p class="section-desc">Ready to transform your outdoor space? Contact us today for a free, no-obligation estimate.</p>
       <div class="contact-cards">
         <div class="contact-card"><div class="contact-icon">📞</div><div class="contact-label">Call Us</div><div class="contact-value">(555) 123-4567</div><div class="contact-sub">Mon–Sat, 7am–6pm</div></div>
-        <div class="contact-card"><div class="contact-icon">✉️</div><div class="contact-label">Email Us</div><div class="contact-value" style="font-size:.9rem;">hello@rangellawncareandlandscaping.com</div><div class="contact-sub">We reply within 24 hours</div></div>
+        <div class="contact-card"><div class="contact-icon">✉️</div><div class="contact-label">Email Us</div><div class="contact-value" style="font-size:.9rem;">hello@greenpathlandscaping.com</div><div class="contact-sub">We reply within 24 hours</div></div>
         <div class="contact-card"><div class="contact-icon">📍</div><div class="contact-label">Service Area</div><div class="contact-value">Your City &amp; Surroundings</div><div class="contact-sub">Up to 30 miles radius</div></div>
       </div>
     </div>
@@ -496,10 +735,10 @@ nav ul a:hover{color:var(--gold);}
       </div>
       <div class="footer-links"><h4>Services</h4><ul><li><a href="#services">Lawn Maintenance</a></li><li><a href="#services">Tree &amp; Shrub Care</a></li><li><a href="#services">Hardscaping</a></li><li><a href="#services">Landscape Design</a></li></ul></div>
       <div class="footer-links"><h4>Company</h4><ul><li><a href="#gallery">Our Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Get a Quote</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
-      <div class="footer-links"><h4>Contact</h4><ul><li><a href="tel:5551234567">(555) 123-4567</a></li><li><a href="mailto:hello@rangellawncareandlandscaping.com">hello@rangellawncareandlandscaping.com</a></li></ul></div>
+      <div class="footer-links"><h4>Contact</h4><ul><li><a href="tel:5551234567">(555) 123-4567</a></li><li><a href="mailto:hello@greenpath.com">hello@greenpathlandscaping.com</a></li></ul></div>
     </div>
   </div>
-  <div class="footer-bottom">&copy; 2026 Rangel Lawncare and Landscaping. All rights reserved.</div>
+  <div class="footer-bottom">&copy; 2026 GreenPath Landscaping. All rights reserved.</div>
 </div>
 
 <script>

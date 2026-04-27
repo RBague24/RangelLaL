@@ -127,9 +127,12 @@ nav ul a:hover{color:var(--gold);}
 
 /* GRASS FOOTER */
 .grass-footer{position:relative;z-index:2;overflow:hidden;background:#06100a;}
-.grass-scene-wrap{position:relative;overflow:hidden;line-height:0;height:240px;
-  background:linear-gradient(to bottom,#0c1e10 0%,#06100a 100%);}
-.grass-scene-wrap svg{position:absolute;bottom:0;left:0;width:100%;overflow:visible;}
+.footer-grass-bottom{
+  background:#06100a;
+  line-height:0;
+  overflow:visible;
+  padding-top:0.5rem;
+}
 .footer-body{background:#06100a;padding:3rem 4rem 0;}
 .footer-content{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2rem;
   justify-content:space-between;align-items:flex-start;padding-bottom:3rem;
@@ -209,7 +212,6 @@ nav ul a:hover{color:var(--gold);}
   .footer-body{padding:2rem 1.25rem 0;}
   .footer-content{flex-direction:column;gap:1.5rem;padding-bottom:2rem;}
   .footer-links h4{margin-top:.25rem;}
-  .grass-scene-wrap{height:160px;}
 }
 </style>
 </head>
@@ -220,7 +222,7 @@ nav ul a:hover{color:var(--gold);}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Rangel<span>Lawncare and Landscaping</span></div>
+  <div class="nav-logo">Rangel <span>Lawncare and Landscaping</span></div>
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Our Work</a></li>
@@ -479,266 +481,144 @@ nav ul a:hover{color:var(--gold);}
 
 <!-- GRASS FOOTER -->
 <div class="grass-footer">
-  <div class="grass-scene-wrap">
-    <!--
-      Each blade cluster uses SVG <animateTransform type="rotate"> 
-      with the pivot point set to the BASE of the blades (cx,cy = bottom-centre).
-      This is the correct SVG way to make only the tips swing left/right
-      while the base stays planted — no CSS transform-origin needed.
-    -->
-    <svg id="grassSvg" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+  <div class="footer-body">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="nav-logo">Rangel <span style="color:var(--gold)">Lawncare and Landscaping</span></div>
+        <p class="footer-tagline">Crafting beautiful landscapes since 2010</p>
+      </div>
+      <div class="footer-links"><h4>Services</h4><ul><li><a href="#services">Lawn Maintenance</a></li><li><a href="#services">Tree &amp; Shrub Care</a></li><li><a href="#services">Hardscaping</a></li><li><a href="#services">Landscape Design</a></li></ul></div>
+      <div class="footer-links"><h4>Company</h4><ul><li><a href="#gallery">Our Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Get a Quote</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+      <div class="footer-links"><h4>Contact</h4><ul><li><a href="tel:5551234567">(555) 123-4567</a></li><li><a href="mailto:hello@rangellal.com">hello@rangellal.com</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Rangel Lawncare and Landscaping. All rights reserved.</div>
+
+  <!-- Grass growing up from the very bottom of the page -->
+  <div class="footer-grass-bottom">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:70px;overflow:visible;">
       <defs>
-        <linearGradient id="gA" x1="0" y1="1" x2="0" y2="0">
+        <linearGradient id="fgA" x1="0" y1="1" x2="0" y2="0">
           <stop offset="0%" stop-color="#122e16"/>
           <stop offset="50%" stop-color="#267030"/>
           <stop offset="85%" stop-color="#389040"/>
           <stop offset="100%" stop-color="#58c060"/>
         </linearGradient>
-        <linearGradient id="gB" x1="0" y1="1" x2="0" y2="0">
+        <linearGradient id="fgB" x1="0" y1="1" x2="0" y2="0">
           <stop offset="0%" stop-color="#163618"/>
           <stop offset="50%" stop-color="#2e7836"/>
           <stop offset="85%" stop-color="#44a84c"/>
           <stop offset="100%" stop-color="#68d070"/>
         </linearGradient>
-        <linearGradient id="gC" x1="0" y1="1" x2="0" y2="0">
+        <linearGradient id="fgC" x1="0" y1="1" x2="0" y2="0">
           <stop offset="0%" stop-color="#0e2410"/>
           <stop offset="50%" stop-color="#205c26"/>
           <stop offset="85%" stop-color="#2e7836"/>
           <stop offset="100%" stop-color="#4aac52"/>
         </linearGradient>
-        <linearGradient id="gD" x1="0" y1="1" x2="0" y2="0">
+        <linearGradient id="fgD" x1="0" y1="1" x2="0" y2="0">
           <stop offset="0%" stop-color="#1a4020"/>
           <stop offset="50%" stop-color="#34883c"/>
           <stop offset="85%" stop-color="#4ab054"/>
           <stop offset="100%" stop-color="#70dc7a"/>
         </linearGradient>
-        <!-- Rolling ground hills -->
-        <linearGradient id="hGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1a4020"/>
-          <stop offset="100%" stop-color="#06100a"/>
-        </linearGradient>
       </defs>
 
-      <!-- Ground hills -->
-      <path fill="#0e2412" d="M0 220 L0 145 Q180 112 360 130 Q540 148 720 118 Q900 88 1080 112 Q1260 136 1440 105 L1440 220Z"/>
-      <path fill="#142e18" d="M0 220 L0 158 Q120 132 240 148 Q360 164 480 138 Q600 112 720 132 Q840 152 960 130 Q1080 108 1200 128 Q1320 148 1440 125 L1440 220Z"/>
-      <path fill="#1a3d1e" d="M0 220 L0 170 Q90 150 180 164 Q270 178 360 158 Q450 138 540 155 Q630 172 720 152 Q810 132 900 150 Q990 168 1080 150 Q1170 132 1260 150 Q1350 168 1440 148 L1440 220Z"/>
-      <path fill="url(#hGrad)" d="M0 220 L0 182 Q72 166 144 178 Q216 190 288 172 Q360 154 432 168 Q504 182 576 165 Q648 148 720 164 Q792 180 864 164 Q936 148 1008 163 Q1080 178 1152 163 Q1224 148 1296 163 Q1368 178 1440 162 L1440 220Z"/>
-
-      <!-- ══════════════════════════════════════════
-           BACK ROW — shorter, darker, behind
-           Each <g> pivots from the bottom-centre of its blades
-           using animateTransform rotate with cx,cy = base point
-      ══════════════════════════════════════════ -->
-
-      <!-- cluster @x=40 base y=205 -->
-      <g>
-        <path fill="url(#gC)" d="M36,205 C34,182 30,165 27,150 C33,158 39,176 40,205Z"/>
-        <path fill="url(#gC)" d="M44,205 C48,180 54,162 60,147 C63,157 61,178 57,205Z"/>
-        <path fill="url(#gC)" d="M52,205 C49,184 44,168 40,154 C47,162 53,182 54,205Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.5,44,205;1.8,44,205;-1.5,44,205" dur="4.1s" begin="-1.2s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <!-- BACK ROW — shorter, roots at y=70 -->
+      <g><path fill="url(#fgC)" d="M27,70 C25,61 21,53 18,46 C24,53 30,61 31,70Z"/><path fill="url(#fgC)" d="M37,70 C41,61 47,53 53,46 C55,53 53,61 49,70Z"/><path fill="url(#fgC)" d="M47,70 C44,61 39,54 35,47 C42,54 48,61 49,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,37,70;1.8,37,70;-1.5,37,70" dur="4.1s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M152,70 C150,61 146,53 143,46 C149,53 155,61 156,70Z"/><path fill="url(#fgC)" d="M162,70 C166,61 172,53 178,46 C180,53 178,61 174,70Z"/><path fill="url(#fgC)" d="M172,70 C169,61 164,54 160,47 C167,54 173,61 174,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.2,162,70;-2.0,162,70;1.2,162,70" dur="3.7s" begin="-2.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M317,70 C315,61 311,53 308,46 C314,53 320,61 321,70Z"/><path fill="url(#fgC)" d="M327,70 C331,61 337,53 343,46 C345,53 343,61 339,70Z"/><path fill="url(#fgC)" d="M337,70 C334,61 329,54 325,47 C332,54 338,61 339,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-0.8,327,70;1.5,327,70;-0.8,327,70" dur="4.6s" begin="-0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M487,70 C485,61 481,53 478,46 C484,53 490,61 491,70Z"/><path fill="url(#fgC)" d="M497,70 C501,61 507,53 513,46 C515,53 513,61 509,70Z"/><path fill="url(#fgC)" d="M507,70 C504,61 499,54 495,47 C502,54 508,61 509,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="2.0,497,70;-1.0,497,70;2.0,497,70" dur="3.4s" begin="-3.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M657,70 C655,61 651,53 648,46 C654,53 660,61 661,70Z"/><path fill="url(#fgC)" d="M667,70 C671,61 677,53 683,46 C685,53 683,61 679,70Z"/><path fill="url(#fgC)" d="M677,70 C674,61 669,54 665,47 C672,54 678,61 679,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.8,667,70;1.0,667,70;-1.8,667,70" dur="5.0s" begin="-1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M832,70 C830,61 826,53 823,46 C829,53 835,61 836,70Z"/><path fill="url(#fgC)" d="M842,70 C846,61 852,53 858,46 C860,53 858,61 854,70Z"/><path fill="url(#fgC)" d="M852,70 C849,61 844,54 840,47 C847,54 853,61 854,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="0.6,842,70;-1.8,842,70;0.6,842,70" dur="3.9s" begin="-0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M1002,70 C1000,61 996,53 993,46 C999,53 1005,61 1006,70Z"/><path fill="url(#fgC)" d="M1012,70 C1016,61 1022,53 1028,46 C1030,53 1028,61 1024,70Z"/><path fill="url(#fgC)" d="M1022,70 C1019,61 1014,54 1010,47 C1017,54 1023,61 1024,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.2,1012,70;1.8,1012,70;-1.2,1012,70" dur="4.3s" begin="-2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M1172,70 C1170,61 1166,53 1163,46 C1169,53 1175,61 1176,70Z"/><path fill="url(#fgC)" d="M1182,70 C1186,61 1192,53 1198,46 C1200,53 1198,61 1194,70Z"/><path fill="url(#fgC)" d="M1192,70 C1189,61 1184,54 1180,47 C1187,54 1193,61 1194,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.5,1182,70;-0.8,1182,70;1.5,1182,70" dur="3.6s" begin="-1.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </g>
+      <g><path fill="url(#fgC)" d="M1347,70 C1345,61 1341,53 1338,46 C1344,53 1350,61 1351,70Z"/><path fill="url(#fgC)" d="M1357,70 C1361,61 1367,53 1373,46 C1375,53 1373,61 1369,70Z"/><path fill="url(#fgC)" d="M1367,70 C1364,61 1359,54 1355,47 C1362,54 1368,61 1369,70Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-2.0,1357,70;0.8,1357,70;-2.0,1357,70" dur="4.8s" begin="-3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
 
-      <!-- cluster @x=155 -->
+      <!-- FRONT ROW — taller, brighter, roots at y=70 -->
       <g>
-        <path fill="url(#gC)" d="M150,204 C148,181 144,164 141,149 C147,157 153,175 154,204Z"/>
-        <path fill="url(#gC)" d="M160,204 C164,179 170,161 176,146 C179,156 177,177 173,204Z"/>
-        <path fill="url(#gC)" d="M168,204 C165,183 160,167 156,153 C163,161 169,181 170,204Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="1.2,160,204;-2.0,160,204;1.2,160,204" dur="3.7s" begin="-2.8s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M83,70 C79,52 71,33 63,16 C73,30 85,51 87,70Z"/>
+        <path fill="url(#fgA)" d="M97,70 C103,50 113,31 122,13 C126,28 122,51 117,70Z"/>
+        <path fill="url(#fgA)" d="M112,70 C107,52 100,34 94,17 C103,31 112,51 113,70Z"/>
+        <path fill="url(#fgB)" d="M75,70 C70,54 63,36 57,20 C65,34 74,53 75,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,97,70;2.0,97,70;-1.5,97,70" dur="3.2s" begin="-0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=320 -->
       <g>
-        <path fill="url(#gC)" d="M315,203 C313,180 309,163 306,148 C312,156 318,174 319,203Z"/>
-        <path fill="url(#gC)" d="M325,203 C329,178 335,160 341,145 C344,155 342,176 338,203Z"/>
-        <path fill="url(#gC)" d="M333,203 C330,182 325,166 321,152 C328,160 334,180 335,203Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-0.8,325,203;1.5,325,203;-0.8,325,203" dur="4.6s" begin="-0.5s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M243,70 C239,52 231,33 223,16 C233,30 245,51 247,70Z"/>
+        <path fill="url(#fgA)" d="M257,70 C263,50 273,31 282,13 C286,28 282,51 277,70Z"/>
+        <path fill="url(#fgA)" d="M272,70 C267,52 260,34 254,17 C263,31 272,51 273,70Z"/>
+        <path fill="url(#fgB)" d="M235,70 C230,54 223,36 217,20 C225,34 234,53 235,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.8,257,70;-1.5,257,70;1.8,257,70" dur="4.0s" begin="-2.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=490 -->
       <g>
-        <path fill="url(#gC)" d="M485,204 C483,181 479,164 476,149 C482,157 488,175 489,204Z"/>
-        <path fill="url(#gC)" d="M495,204 C499,179 505,161 511,146 C514,156 512,177 508,204Z"/>
-        <path fill="url(#gC)" d="M503,204 C500,183 495,167 491,153 C498,161 504,181 505,204Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="2.0,495,204;-1.0,495,204;2.0,495,204" dur="3.4s" begin="-3.2s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M413,70 C409,52 401,33 393,16 C403,30 415,51 417,70Z"/>
+        <path fill="url(#fgD)" d="M427,70 C433,50 443,31 452,13 C456,28 452,51 447,70Z"/>
+        <path fill="url(#fgD)" d="M442,70 C437,52 430,34 424,17 C433,31 442,51 443,70Z"/>
+        <path fill="url(#fgB)" d="M405,70 C400,54 393,36 387,20 C395,34 404,53 405,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.0,427,70;1.8,427,70;-1.0,427,70" dur="3.7s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=660 -->
       <g>
-        <path fill="url(#gC)" d="M655,203 C653,180 649,163 646,148 C652,156 658,174 659,203Z"/>
-        <path fill="url(#gC)" d="M665,203 C669,178 675,160 681,145 C684,155 682,176 678,203Z"/>
-        <path fill="url(#gC)" d="M673,203 C670,182 665,166 661,152 C668,160 674,180 675,203Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.8,665,203;1.0,665,203;-1.8,665,203" dur="5.0s" begin="-1.8s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M573,70 C569,52 561,33 553,16 C563,30 575,51 577,70Z"/>
+        <path fill="url(#fgA)" d="M587,70 C593,50 603,31 612,13 C616,28 612,51 607,70Z"/>
+        <path fill="url(#fgA)" d="M602,70 C597,52 590,34 584,17 C593,31 602,51 603,70Z"/>
+        <path fill="url(#fgB)" d="M565,70 C560,54 553,36 547,20 C555,34 564,53 565,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="2.0,587,70;-1.2,587,70;2.0,587,70" dur="2.9s" begin="-3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=835 -->
       <g>
-        <path fill="url(#gC)" d="M830,204 C828,181 824,164 821,149 C827,157 833,175 834,204Z"/>
-        <path fill="url(#gC)" d="M840,204 C844,179 850,161 856,146 C859,156 857,177 853,204Z"/>
-        <path fill="url(#gC)" d="M848,204 C845,183 840,167 836,153 C843,161 849,181 850,204Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="0.6,840,204;-1.8,840,204;0.6,840,204" dur="3.9s" begin="-0.3s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M743,70 C739,52 731,33 723,16 C733,30 745,51 747,70Z"/>
+        <path fill="url(#fgD)" d="M757,70 C763,50 773,31 782,13 C786,28 782,51 777,70Z"/>
+        <path fill="url(#fgD)" d="M772,70 C767,52 760,34 754,17 C763,31 772,51 773,70Z"/>
+        <path fill="url(#fgB)" d="M735,70 C730,54 723,36 717,20 C725,34 734,53 735,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.8,757,70;1.2,757,70;-1.8,757,70" dur="4.5s" begin="-0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=1005 -->
       <g>
-        <path fill="url(#gC)" d="M1000,203 C998,180 994,163 991,148 C997,156 1003,174 1004,203Z"/>
-        <path fill="url(#gC)" d="M1010,203 C1014,178 1020,160 1026,145 C1029,155 1027,176 1023,203Z"/>
-        <path fill="url(#gC)" d="M1018,203 C1015,182 1010,166 1006,152 C1013,160 1019,180 1020,203Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.2,1010,203;1.8,1010,203;-1.2,1010,203" dur="4.3s" begin="-2.5s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M913,70 C909,52 901,33 893,16 C903,30 915,51 917,70Z"/>
+        <path fill="url(#fgA)" d="M927,70 C933,50 943,31 952,13 C956,28 952,51 947,70Z"/>
+        <path fill="url(#fgA)" d="M942,70 C937,52 930,34 924,17 C933,31 942,51 943,70Z"/>
+        <path fill="url(#fgB)" d="M905,70 C900,54 893,36 887,20 C895,34 904,53 905,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="0.8,927,70;-2.0,927,70;0.8,927,70" dur="3.5s" begin="-2.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=1175 -->
       <g>
-        <path fill="url(#gC)" d="M1170,204 C1168,181 1164,164 1161,149 C1167,157 1173,175 1174,204Z"/>
-        <path fill="url(#gC)" d="M1180,204 C1184,179 1190,161 1196,146 C1199,156 1197,177 1193,204Z"/>
-        <path fill="url(#gC)" d="M1188,204 C1185,183 1180,167 1176,153 C1183,161 1189,181 1190,204Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="1.5,1180,204;-0.8,1180,204;1.5,1180,204" dur="3.6s" begin="-1.0s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M1078,70 C1074,52 1066,33 1058,16 C1068,30 1080,51 1082,70Z"/>
+        <path fill="url(#fgD)" d="M1092,70 C1098,50 1108,31 1117,13 C1121,28 1117,51 1112,70Z"/>
+        <path fill="url(#fgD)" d="M1107,70 C1102,52 1095,34 1089,17 C1098,31 1107,51 1108,70Z"/>
+        <path fill="url(#fgB)" d="M1070,70 C1065,54 1058,36 1052,20 C1060,34 1069,53 1070,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,1092,70;1.8,1092,70;-1.5,1092,70" dur="4.2s" begin="-1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=1345 -->
       <g>
-        <path fill="url(#gC)" d="M1340,203 C1338,180 1334,163 1331,148 C1337,156 1343,174 1344,203Z"/>
-        <path fill="url(#gC)" d="M1350,203 C1354,178 1360,160 1366,145 C1369,155 1367,176 1363,203Z"/>
-        <path fill="url(#gC)" d="M1358,203 C1355,182 1350,166 1346,152 C1353,160 1359,180 1360,203Z"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-2.0,1350,203;0.8,1350,203;-2.0,1350,203" dur="4.8s" begin="-3.6s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M1248,70 C1244,52 1236,33 1228,16 C1238,30 1250,51 1252,70Z"/>
+        <path fill="url(#fgA)" d="M1262,70 C1268,50 1278,31 1287,13 C1291,28 1287,51 1282,70Z"/>
+        <path fill="url(#fgA)" d="M1277,70 C1272,52 1265,34 1259,17 C1268,31 1277,51 1278,70Z"/>
+        <path fill="url(#fgB)" d="M1240,70 C1235,54 1228,36 1222,20 C1230,34 1239,53 1240,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.6,1262,70;-1.0,1262,70;1.6,1262,70" dur="3.3s" begin="-2.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- ══ FRONT ROW — taller, brighter ══ -->
-
-      <!-- cluster @x=90 base y=210 -->
       <g>
-        <path fill="url(#gA)" d="M83,210 C79,180 71,152 63,128 C73,145 85,174 87,210Z"/>
-        <path fill="url(#gA)" d="M97,210 C103,178 113,149 122,125 C126,143 122,174 117,210Z"/>
-        <path fill="url(#gA)" d="M112,210 C107,181 100,155 94,132 C103,148 112,177 113,210Z"/>
-        <path fill="url(#gB)" d="M75,210 C70,184 63,160 57,140 C65,154 74,181 75,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.5,97,210;2.0,97,210;-1.5,97,210" dur="3.2s" begin="-0.7s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M1393,70 C1389,52 1381,33 1373,16 C1383,30 1395,51 1397,70Z"/>
+        <path fill="url(#fgD)" d="M1407,70 C1413,50 1423,31 1432,13 C1436,28 1432,51 1427,70Z"/>
+        <path fill="url(#fgD)" d="M1422,70 C1417,52 1410,34 1404,17 C1413,31 1422,51 1423,70Z"/>
+        <path fill="url(#fgB)" d="M1385,70 C1380,54 1373,36 1367,20 C1375,34 1384,53 1385,70Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-0.9,1407,70;2.0,1407,70;-0.9,1407,70" dur="4.7s" begin="-0.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-
-      <!-- cluster @x=240 -->
-      <g>
-        <path fill="url(#gA)" d="M233,210 C229,180 221,152 213,128 C223,145 235,174 237,210Z"/>
-        <path fill="url(#gA)" d="M247,210 C253,178 263,149 272,125 C276,143 272,174 267,210Z"/>
-        <path fill="url(#gA)" d="M262,210 C257,181 250,155 244,132 C253,148 262,177 263,210Z"/>
-        <path fill="url(#gB)" d="M225,210 C220,184 213,160 207,140 C215,154 224,181 225,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="1.8,247,210;-1.5,247,210;1.8,247,210" dur="4.0s" begin="-2.1s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=405 -->
-      <g>
-        <path fill="url(#gD)" d="M398,210 C394,180 386,152 378,128 C388,145 400,174 402,210Z"/>
-        <path fill="url(#gD)" d="M412,210 C418,178 428,149 437,125 C441,143 437,174 432,210Z"/>
-        <path fill="url(#gD)" d="M427,210 C422,181 415,155 409,132 C418,148 427,177 428,210Z"/>
-        <path fill="url(#gB)" d="M390,210 C385,184 378,160 372,140 C380,154 389,181 390,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.0,412,210;1.8,412,210;-1.0,412,210" dur="3.7s" begin="-1.5s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=570 -->
-      <g>
-        <path fill="url(#gA)" d="M563,210 C559,180 551,152 543,128 C553,145 565,174 567,210Z"/>
-        <path fill="url(#gA)" d="M577,210 C583,178 593,149 602,125 C606,143 602,174 597,210Z"/>
-        <path fill="url(#gA)" d="M592,210 C587,181 580,155 574,132 C583,148 592,177 593,210Z"/>
-        <path fill="url(#gB)" d="M555,210 C550,184 543,160 537,140 C545,154 554,181 555,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="2.0,577,210;-1.2,577,210;2.0,577,210" dur="2.9s" begin="-3.4s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=735 -->
-      <g>
-        <path fill="url(#gD)" d="M728,210 C724,180 716,152 708,128 C718,145 730,174 732,210Z"/>
-        <path fill="url(#gD)" d="M742,210 C748,178 758,149 767,125 C771,143 767,174 762,210Z"/>
-        <path fill="url(#gD)" d="M757,210 C752,181 745,155 739,132 C748,148 757,177 758,210Z"/>
-        <path fill="url(#gB)" d="M720,210 C715,184 708,160 702,140 C710,154 719,181 720,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.8,742,210;1.2,742,210;-1.8,742,210" dur="4.5s" begin="-0.9s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=900 -->
-      <g>
-        <path fill="url(#gA)" d="M893,210 C889,180 881,152 873,128 C883,145 895,174 897,210Z"/>
-        <path fill="url(#gA)" d="M907,210 C913,178 923,149 932,125 C936,143 932,174 927,210Z"/>
-        <path fill="url(#gA)" d="M922,210 C917,181 910,155 904,132 C913,148 922,177 923,210Z"/>
-        <path fill="url(#gB)" d="M885,210 C880,184 873,160 867,140 C875,154 884,181 885,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="0.8,907,210;-2.0,907,210;0.8,907,210" dur="3.5s" begin="-2.0s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=1065 -->
-      <g>
-        <path fill="url(#gD)" d="M1058,210 C1054,180 1046,152 1038,128 C1048,145 1060,174 1062,210Z"/>
-        <path fill="url(#gD)" d="M1072,210 C1078,178 1088,149 1097,125 C1101,143 1097,174 1092,210Z"/>
-        <path fill="url(#gD)" d="M1087,210 C1082,181 1075,155 1069,132 C1078,148 1087,177 1088,210Z"/>
-        <path fill="url(#gB)" d="M1050,210 C1045,184 1038,160 1032,140 C1040,154 1049,181 1050,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-1.5,1072,210;1.8,1072,210;-1.5,1072,210" dur="4.2s" begin="-1.3s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=1230 -->
-      <g>
-        <path fill="url(#gA)" d="M1223,210 C1219,180 1211,152 1203,128 C1213,145 1225,174 1227,210Z"/>
-        <path fill="url(#gA)" d="M1237,210 C1243,178 1253,149 1262,125 C1266,143 1262,174 1257,210Z"/>
-        <path fill="url(#gA)" d="M1252,210 C1247,181 1240,155 1234,132 C1243,148 1252,177 1253,210Z"/>
-        <path fill="url(#gB)" d="M1215,210 C1210,184 1203,160 1197,140 C1205,154 1214,181 1215,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="1.6,1237,210;-1.0,1237,210;1.6,1237,210" dur="3.3s" begin="-2.7s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- cluster @x=1390 -->
-      <g>
-        <path fill="url(#gD)" d="M1383,210 C1379,180 1371,152 1363,128 C1373,145 1385,174 1387,210Z"/>
-        <path fill="url(#gD)" d="M1397,210 C1403,178 1413,149 1422,125 C1426,143 1422,174 1417,210Z"/>
-        <path fill="url(#gD)" d="M1412,210 C1407,181 1400,155 1394,132 C1403,148 1412,177 1413,210Z"/>
-        <path fill="url(#gB)" d="M1375,210 C1370,184 1363,160 1357,140 C1365,154 1374,181 1375,210Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate"
-          values="-0.9,1397,210;2.0,1397,210;-0.9,1397,210" dur="4.7s" begin="-0.4s" repeatCount="indefinite" calcMode="spline"
-          keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-      </g>
-
-      <!-- Ground base -->
-      <rect y="210" width="1440" height="10" fill="#06100a"/>
     </svg>
   </div>
-
-  <div class="footer-body">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <div class="hello">Rangel<span style="color:var(--gold)">Lawncare and Landscaping</span></div>
-        <p class="footer-tagline">Crafting beautiful landscapes since 2010</p>
-      </div>
-      <div class="footer-links"><h4>Services</h4><ul><li><a href="#services">Lawn Maintenance</a></li><li><a href="#services">Tree &amp; Shrub Care</a></li><li><a href="#services">Hardscaping</a></li><li><a href="#services">Landscape Design</a></li></ul></div>
-      <div class="footer-links"><h4>Company</h4><ul><li><a href="#gallery">Our Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Get a Quote</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
-      <div class="footer-links"><h4>Contact</h4><ul><li><a href="tel:5551234567">(555) 123-4567</a></li><li><a href="mailto:hello@greenpath.com">hello@rangellal.com</a></li></ul></div>
-    </div>
-  </div>
-  <div class="footer-bottom">&copy; 2026 Rangel Lawncare and Landscaping. All rights reserved.</div>
 </div>
 
 <script>

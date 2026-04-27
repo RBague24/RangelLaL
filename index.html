@@ -17,34 +17,20 @@ body{font-family:'Lato',sans-serif;color:var(--text-dark);overflow-x:hidden;back
 nav,.hero,.page-body,.grass-footer{position:relative;z-index:1;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:flex-start;
-  justify-content:space-between;padding:0.85rem 3rem 0;
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;padding:1rem 3rem;
   background:rgba(8,22,10,0.95);backdrop-filter:blur(8px);
-  border-bottom:none;
-  /* tall enough to contain links + grass blades */
-  height:90px;
-  overflow:hidden;}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;letter-spacing:.03em;line-height:1;margin-top:0.1rem;}
+  border-bottom:1px solid rgba(255,255,255,0.07);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;letter-spacing:.03em;}
 .nav-logo span{color:var(--gold);}
 nav ul{list-style:none;display:flex;gap:2rem;}
 nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;
   letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
 nav ul a:hover{color:var(--gold);}
 
-/* NAV GRASS — sits at the bottom of the nav, blades grow upward */
-.nav-grass{
-  position:absolute;
-  bottom:0; left:0; right:0;
-  height:52px;
-  pointer-events:none;
-  line-height:0;
-  overflow:visible;
-}
-.nav-grass svg{display:block;width:100%;}
-
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:10rem 2rem 4rem;text-align:center;
+  justify-content:center;padding:8rem 2rem 4rem;text-align:center;
   background:linear-gradient(to bottom,rgba(6,16,8,.88) 0%,rgba(12,32,16,.6) 55%,rgba(18,44,22,.28) 100%);}
 .hero-eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
   margin-bottom:1.1rem;animation:fadeUp .8s .1s both;}
@@ -166,10 +152,6 @@ nav ul a:hover{color:var(--gold);}
   nav ul{gap:1.25rem;flex-wrap:wrap;justify-content:center;}
   nav ul a{font-size:.72rem;letter-spacing:.08em;}
 
-  /* Nav grass — keep it full width below the links */
-  .nav-grass{position:relative;bottom:auto;margin-top:.25rem;height:38px;}
-  .nav-grass svg{height:38px;}
-
   /* Hero — more breathing room below taller nav */
   .hero{padding:7rem 1.25rem 3rem;}
   .hero-title{font-size:clamp(2.2rem,10vw,3.2rem);}
@@ -229,9 +211,7 @@ nav ul a:hover{color:var(--gold);}
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-
-  <!-- Grass blades — footer-style, growing downward from nav bottom edge -->
-  <div class="nav-grass">
+</nav>
     <!--
       viewBox: 0 0 1440 52. y=52 is the nav bottom edge (blade roots).
       Blades grow upward (decreasing y). Pivots set to y=52.
@@ -496,7 +476,7 @@ nav ul a:hover{color:var(--gold);}
 
   <!-- Grass growing up from the very bottom of the page -->
   <div class="footer-grass-bottom">
-    <svg viewBox="0 0 1440 70" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:70px;overflow:visible;">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:140px;overflow:visible;">
       <defs>
         <linearGradient id="fgA" x1="0" y1="1" x2="0" y2="0">
           <stop offset="0%" stop-color="#122e16"/>
@@ -525,97 +505,97 @@ nav ul a:hover{color:var(--gold);}
       </defs>
 
       <!-- BACK ROW — shorter, roots at y=70 -->
-      <g><path fill="url(#fgC)" d="M27,70 C25,61 21,53 18,46 C24,53 30,61 31,70Z"/><path fill="url(#fgC)" d="M37,70 C41,61 47,53 53,46 C55,53 53,61 49,70Z"/><path fill="url(#fgC)" d="M47,70 C44,61 39,54 35,47 C42,54 48,61 49,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.5,37,70;1.8,37,70;-1.5,37,70" dur="4.1s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M27,140 C25,122 21,106 18,92 C24,106 30,122 31,140Z"/><path fill="url(#fgC)" d="M37,140 C41,122 47,106 53,92 C55,106 53,122 49,140Z"/><path fill="url(#fgC)" d="M47,140 C44,122 39,108 35,94 C42,108 48,122 49,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,37,140;1.8,37,140;-1.5,37,70" dur="4.1s" begin="-1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M152,70 C150,61 146,53 143,46 C149,53 155,61 156,70Z"/><path fill="url(#fgC)" d="M162,70 C166,61 172,53 178,46 C180,53 178,61 174,70Z"/><path fill="url(#fgC)" d="M172,70 C169,61 164,54 160,47 C167,54 173,61 174,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="1.2,162,70;-2.0,162,70;1.2,162,70" dur="3.7s" begin="-2.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M152,140 C150,122 146,106 143,92 C149,106 155,122 156,140Z"/><path fill="url(#fgC)" d="M162,140 C166,122 172,106 178,92 C180,106 178,122 174,140Z"/><path fill="url(#fgC)" d="M172,140 C169,122 164,108 160,94 C167,108 173,122 174,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.2,162,140;-2.0,162,140;1.2,162,70" dur="3.7s" begin="-2.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M317,70 C315,61 311,53 308,46 C314,53 320,61 321,70Z"/><path fill="url(#fgC)" d="M327,70 C331,61 337,53 343,46 C345,53 343,61 339,70Z"/><path fill="url(#fgC)" d="M337,70 C334,61 329,54 325,47 C332,54 338,61 339,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="-0.8,327,70;1.5,327,70;-0.8,327,70" dur="4.6s" begin="-0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M317,140 C315,122 311,106 308,92 C314,106 320,122 321,140Z"/><path fill="url(#fgC)" d="M327,140 C331,122 337,106 343,92 C345,106 343,122 339,140Z"/><path fill="url(#fgC)" d="M337,140 C334,122 329,108 325,94 C332,108 338,122 339,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-0.8,327,140;1.5,327,140;-0.8,327,70" dur="4.6s" begin="-0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M487,70 C485,61 481,53 478,46 C484,53 490,61 491,70Z"/><path fill="url(#fgC)" d="M497,70 C501,61 507,53 513,46 C515,53 513,61 509,70Z"/><path fill="url(#fgC)" d="M507,70 C504,61 499,54 495,47 C502,54 508,61 509,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="2.0,497,70;-1.0,497,70;2.0,497,70" dur="3.4s" begin="-3.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M487,140 C485,122 481,106 478,92 C484,106 490,122 491,140Z"/><path fill="url(#fgC)" d="M497,140 C501,122 507,106 513,92 C515,106 513,122 509,140Z"/><path fill="url(#fgC)" d="M507,140 C504,122 499,108 495,94 C502,108 508,122 509,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="2.0,497,140;-1.0,497,140;2.0,497,70" dur="3.4s" begin="-3.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M657,70 C655,61 651,53 648,46 C654,53 660,61 661,70Z"/><path fill="url(#fgC)" d="M667,70 C671,61 677,53 683,46 C685,53 683,61 679,70Z"/><path fill="url(#fgC)" d="M677,70 C674,61 669,54 665,47 C672,54 678,61 679,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.8,667,70;1.0,667,70;-1.8,667,70" dur="5.0s" begin="-1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M657,140 C655,122 651,106 648,92 C654,106 660,122 661,140Z"/><path fill="url(#fgC)" d="M667,140 C671,122 677,106 683,92 C685,106 683,122 679,140Z"/><path fill="url(#fgC)" d="M677,140 C674,122 669,108 665,94 C672,108 678,122 679,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.8,667,140;1.0,667,140;-1.8,667,70" dur="5.0s" begin="-1.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M832,70 C830,61 826,53 823,46 C829,53 835,61 836,70Z"/><path fill="url(#fgC)" d="M842,70 C846,61 852,53 858,46 C860,53 858,61 854,70Z"/><path fill="url(#fgC)" d="M852,70 C849,61 844,54 840,47 C847,54 853,61 854,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="0.6,842,70;-1.8,842,70;0.6,842,70" dur="3.9s" begin="-0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M832,140 C830,122 826,106 823,92 C829,106 835,122 836,140Z"/><path fill="url(#fgC)" d="M842,140 C846,122 852,106 858,92 C860,106 858,122 854,140Z"/><path fill="url(#fgC)" d="M852,140 C849,122 844,108 840,94 C847,108 853,122 854,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="0.6,842,140;-1.8,842,140;0.6,842,70" dur="3.9s" begin="-0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M1002,70 C1000,61 996,53 993,46 C999,53 1005,61 1006,70Z"/><path fill="url(#fgC)" d="M1012,70 C1016,61 1022,53 1028,46 C1030,53 1028,61 1024,70Z"/><path fill="url(#fgC)" d="M1022,70 C1019,61 1014,54 1010,47 C1017,54 1023,61 1024,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.2,1012,70;1.8,1012,70;-1.2,1012,70" dur="4.3s" begin="-2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M1002,140 C1000,122 996,106 993,92 C999,106 1005,122 1006,140Z"/><path fill="url(#fgC)" d="M1012,140 C1016,122 1022,106 1028,92 C1030,106 1028,122 1024,140Z"/><path fill="url(#fgC)" d="M1022,140 C1019,122 1014,108 1010,94 C1017,108 1023,122 1024,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.2,1012,140;1.8,1012,140;-1.2,1012,70" dur="4.3s" begin="-2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M1172,70 C1170,61 1166,53 1163,46 C1169,53 1175,61 1176,70Z"/><path fill="url(#fgC)" d="M1182,70 C1186,61 1192,53 1198,46 C1200,53 1198,61 1194,70Z"/><path fill="url(#fgC)" d="M1192,70 C1189,61 1184,54 1180,47 C1187,54 1193,61 1194,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="1.5,1182,70;-0.8,1182,70;1.5,1182,70" dur="3.6s" begin="-1.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M1172,140 C1170,122 1166,106 1163,92 C1169,106 1175,122 1176,140Z"/><path fill="url(#fgC)" d="M1182,140 C1186,122 1192,106 1198,92 C1200,106 1198,122 1194,140Z"/><path fill="url(#fgC)" d="M1192,140 C1189,122 1184,108 1180,94 C1187,108 1193,122 1194,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.5,1182,140;-0.8,1182,140;1.5,1182,70" dur="3.6s" begin="-1.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
-      <g><path fill="url(#fgC)" d="M1347,70 C1345,61 1341,53 1338,46 C1344,53 1350,61 1351,70Z"/><path fill="url(#fgC)" d="M1357,70 C1361,61 1367,53 1373,46 C1375,53 1373,61 1369,70Z"/><path fill="url(#fgC)" d="M1367,70 C1364,61 1359,54 1355,47 C1362,54 1368,61 1369,70Z"/>
-        <animateTransform attributeName="transform" type="rotate" values="-2.0,1357,70;0.8,1357,70;-2.0,1357,70" dur="4.8s" begin="-3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+      <g><path fill="url(#fgC)" d="M1347,140 C1345,122 1341,106 1338,92 C1344,106 1350,122 1351,140Z"/><path fill="url(#fgC)" d="M1357,140 C1361,122 1367,106 1373,92 C1375,106 1373,122 1369,140Z"/><path fill="url(#fgC)" d="M1367,140 C1364,122 1359,108 1355,94 C1362,108 1368,122 1369,140Z"/>
+        <animateTransform attributeName="transform" type="rotate" values="-2.0,1357,140;0.8,1357,140;-2.0,1357,70" dur="4.8s" begin="-3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
 
       <!-- FRONT ROW — taller, brighter, roots at y=70 -->
       <g>
-        <path fill="url(#fgA)" d="M83,70 C79,52 71,33 63,16 C73,30 85,51 87,70Z"/>
-        <path fill="url(#fgA)" d="M97,70 C103,50 113,31 122,13 C126,28 122,51 117,70Z"/>
-        <path fill="url(#fgA)" d="M112,70 C107,52 100,34 94,17 C103,31 112,51 113,70Z"/>
-        <path fill="url(#fgB)" d="M75,70 C70,54 63,36 57,20 C65,34 74,53 75,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.5,97,70;2.0,97,70;-1.5,97,70" dur="3.2s" begin="-0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M83,140 C79,104 71,66 63,32 C73,60 85,102 87,140Z"/>
+        <path fill="url(#fgA)" d="M97,140 C103,100 113,62 122,26 C126,56 122,102 117,140Z"/>
+        <path fill="url(#fgA)" d="M112,140 C107,104 100,68 94,34 C103,62 112,102 113,140Z"/>
+        <path fill="url(#fgB)" d="M75,140 C70,108 63,72 57,40 C65,68 74,106 75,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,97,140;2.0,97,140;-1.5,97,70" dur="3.2s" begin="-0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgA)" d="M243,70 C239,52 231,33 223,16 C233,30 245,51 247,70Z"/>
-        <path fill="url(#fgA)" d="M257,70 C263,50 273,31 282,13 C286,28 282,51 277,70Z"/>
-        <path fill="url(#fgA)" d="M272,70 C267,52 260,34 254,17 C263,31 272,51 273,70Z"/>
-        <path fill="url(#fgB)" d="M235,70 C230,54 223,36 217,20 C225,34 234,53 235,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="1.8,257,70;-1.5,257,70;1.8,257,70" dur="4.0s" begin="-2.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M243,140 C239,104 231,66 223,32 C233,60 245,102 247,140Z"/>
+        <path fill="url(#fgA)" d="M257,140 C263,100 273,62 282,26 C286,56 282,102 277,140Z"/>
+        <path fill="url(#fgA)" d="M272,140 C267,104 260,68 254,34 C263,62 272,102 273,140Z"/>
+        <path fill="url(#fgB)" d="M235,140 C230,108 223,72 217,40 C225,68 234,106 235,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.8,257,140;-1.5,257,140;1.8,257,70" dur="4.0s" begin="-2.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgD)" d="M413,70 C409,52 401,33 393,16 C403,30 415,51 417,70Z"/>
-        <path fill="url(#fgD)" d="M427,70 C433,50 443,31 452,13 C456,28 452,51 447,70Z"/>
-        <path fill="url(#fgD)" d="M442,70 C437,52 430,34 424,17 C433,31 442,51 443,70Z"/>
-        <path fill="url(#fgB)" d="M405,70 C400,54 393,36 387,20 C395,34 404,53 405,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.0,427,70;1.8,427,70;-1.0,427,70" dur="3.7s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M413,140 C409,104 401,66 393,32 C403,60 415,102 417,140Z"/>
+        <path fill="url(#fgD)" d="M427,140 C433,100 443,62 452,26 C456,56 452,102 447,140Z"/>
+        <path fill="url(#fgD)" d="M442,140 C437,104 430,68 424,34 C433,62 442,102 443,140Z"/>
+        <path fill="url(#fgB)" d="M405,140 C400,108 393,72 387,40 C395,68 404,106 405,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.0,427,140;1.8,427,140;-1.0,427,70" dur="3.7s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgA)" d="M573,70 C569,52 561,33 553,16 C563,30 575,51 577,70Z"/>
-        <path fill="url(#fgA)" d="M587,70 C593,50 603,31 612,13 C616,28 612,51 607,70Z"/>
-        <path fill="url(#fgA)" d="M602,70 C597,52 590,34 584,17 C593,31 602,51 603,70Z"/>
-        <path fill="url(#fgB)" d="M565,70 C560,54 553,36 547,20 C555,34 564,53 565,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="2.0,587,70;-1.2,587,70;2.0,587,70" dur="2.9s" begin="-3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M573,140 C569,104 561,66 553,32 C563,60 575,102 577,140Z"/>
+        <path fill="url(#fgA)" d="M587,140 C593,100 603,62 612,26 C616,56 612,102 607,140Z"/>
+        <path fill="url(#fgA)" d="M602,140 C597,104 590,68 584,34 C593,62 602,102 603,140Z"/>
+        <path fill="url(#fgB)" d="M565,140 C560,108 553,72 547,40 C555,68 564,106 565,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="2.0,587,140;-1.2,587,140;2.0,587,70" dur="2.9s" begin="-3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgD)" d="M743,70 C739,52 731,33 723,16 C733,30 745,51 747,70Z"/>
-        <path fill="url(#fgD)" d="M757,70 C763,50 773,31 782,13 C786,28 782,51 777,70Z"/>
-        <path fill="url(#fgD)" d="M772,70 C767,52 760,34 754,17 C763,31 772,51 773,70Z"/>
-        <path fill="url(#fgB)" d="M735,70 C730,54 723,36 717,20 C725,34 734,53 735,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.8,757,70;1.2,757,70;-1.8,757,70" dur="4.5s" begin="-0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M743,140 C739,104 731,66 723,32 C733,60 745,102 747,140Z"/>
+        <path fill="url(#fgD)" d="M757,140 C763,100 773,62 782,26 C786,56 782,102 777,140Z"/>
+        <path fill="url(#fgD)" d="M772,140 C767,104 760,68 754,34 C763,62 772,102 773,140Z"/>
+        <path fill="url(#fgB)" d="M735,140 C730,108 723,72 717,40 C725,68 734,106 735,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.8,757,140;1.2,757,140;-1.8,757,70" dur="4.5s" begin="-0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgA)" d="M913,70 C909,52 901,33 893,16 C903,30 915,51 917,70Z"/>
-        <path fill="url(#fgA)" d="M927,70 C933,50 943,31 952,13 C956,28 952,51 947,70Z"/>
-        <path fill="url(#fgA)" d="M942,70 C937,52 930,34 924,17 C933,31 942,51 943,70Z"/>
-        <path fill="url(#fgB)" d="M905,70 C900,54 893,36 887,20 C895,34 904,53 905,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="0.8,927,70;-2.0,927,70;0.8,927,70" dur="3.5s" begin="-2.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M913,140 C909,104 901,66 893,32 C903,60 915,102 917,140Z"/>
+        <path fill="url(#fgA)" d="M927,140 C933,100 943,62 952,26 C956,56 952,102 947,140Z"/>
+        <path fill="url(#fgA)" d="M942,140 C937,104 930,68 924,34 C933,62 942,102 943,140Z"/>
+        <path fill="url(#fgB)" d="M905,140 C900,108 893,72 887,40 C895,68 904,106 905,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="0.8,927,140;-2.0,927,140;0.8,927,70" dur="3.5s" begin="-2.0s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgD)" d="M1078,70 C1074,52 1066,33 1058,16 C1068,30 1080,51 1082,70Z"/>
-        <path fill="url(#fgD)" d="M1092,70 C1098,50 1108,31 1117,13 C1121,28 1117,51 1112,70Z"/>
-        <path fill="url(#fgD)" d="M1107,70 C1102,52 1095,34 1089,17 C1098,31 1107,51 1108,70Z"/>
-        <path fill="url(#fgB)" d="M1070,70 C1065,54 1058,36 1052,20 C1060,34 1069,53 1070,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="-1.5,1092,70;1.8,1092,70;-1.5,1092,70" dur="4.2s" begin="-1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M1078,140 C1074,104 1066,66 1058,32 C1068,60 1080,102 1082,140Z"/>
+        <path fill="url(#fgD)" d="M1092,140 C1098,100 1108,62 1117,26 C1121,56 1117,102 1112,140Z"/>
+        <path fill="url(#fgD)" d="M1107,140 C1102,104 1095,68 1089,34 C1098,62 1107,102 1108,140Z"/>
+        <path fill="url(#fgB)" d="M1070,140 C1065,108 1058,72 1052,40 C1060,68 1069,106 1070,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-1.5,1092,140;1.8,1092,140;-1.5,1092,70" dur="4.2s" begin="-1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgA)" d="M1248,70 C1244,52 1236,33 1228,16 C1238,30 1250,51 1252,70Z"/>
-        <path fill="url(#fgA)" d="M1262,70 C1268,50 1278,31 1287,13 C1291,28 1287,51 1282,70Z"/>
-        <path fill="url(#fgA)" d="M1277,70 C1272,52 1265,34 1259,17 C1268,31 1277,51 1278,70Z"/>
-        <path fill="url(#fgB)" d="M1240,70 C1235,54 1228,36 1222,20 C1230,34 1239,53 1240,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="1.6,1262,70;-1.0,1262,70;1.6,1262,70" dur="3.3s" begin="-2.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgA)" d="M1248,140 C1244,104 1236,66 1228,32 C1238,60 1250,102 1252,140Z"/>
+        <path fill="url(#fgA)" d="M1262,140 C1268,100 1278,62 1287,26 C1291,56 1287,102 1282,140Z"/>
+        <path fill="url(#fgA)" d="M1277,140 C1272,104 1265,68 1259,34 C1268,62 1277,102 1278,140Z"/>
+        <path fill="url(#fgB)" d="M1240,140 C1235,108 1228,72 1222,40 C1230,68 1239,106 1240,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="1.6,1262,140;-1.0,1262,140;1.6,1262,70" dur="3.3s" begin="-2.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
       <g>
-        <path fill="url(#fgD)" d="M1393,70 C1389,52 1381,33 1373,16 C1383,30 1395,51 1397,70Z"/>
-        <path fill="url(#fgD)" d="M1407,70 C1413,50 1423,31 1432,13 C1436,28 1432,51 1427,70Z"/>
-        <path fill="url(#fgD)" d="M1422,70 C1417,52 1410,34 1404,17 C1413,31 1422,51 1423,70Z"/>
-        <path fill="url(#fgB)" d="M1385,70 C1380,54 1373,36 1367,20 C1375,34 1384,53 1385,70Z" opacity=".75"/>
-        <animateTransform attributeName="transform" type="rotate" values="-0.9,1407,70;2.0,1407,70;-0.9,1407,70" dur="4.7s" begin="-0.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <path fill="url(#fgD)" d="M1393,140 C1389,104 1381,66 1373,32 C1383,60 1395,102 1397,140Z"/>
+        <path fill="url(#fgD)" d="M1407,140 C1413,100 1423,62 1432,26 C1436,56 1432,102 1427,140Z"/>
+        <path fill="url(#fgD)" d="M1422,140 C1417,104 1410,68 1404,34 C1413,62 1422,102 1423,140Z"/>
+        <path fill="url(#fgB)" d="M1385,140 C1380,108 1373,72 1367,40 C1375,68 1384,106 1385,140Z" opacity=".75"/>
+        <animateTransform attributeName="transform" type="rotate" values="-0.9,1407,140;2.0,1407,140;-0.9,1407,70" dur="4.7s" begin="-0.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
       </g>
     </svg>
   </div>

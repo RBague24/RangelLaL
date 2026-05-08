@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursery & Garden Center - Rangel Lawncare</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green-dark:#1a3d1f;--green-mid:#2e6b35;--green-light:#4a9e55;
+  --stone-mid:#8a7a6a;--gold:#c9933a;--text-dark:#1e1a16;--text-mid:#4a3f35;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;color:var(--text-dark);overflow-x:hidden;background:#13221a;}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+nav,.hero,.page-body,.grass-footer{position:relative;z-index:1;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;padding:1rem 3rem;
+  background:rgba(8,22,10,0.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.07);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;letter-spacing:.03em;cursor:pointer;}
+.nav-logo span{color:var(--gold);}
+nav ul{list-style:none;display:flex;gap:2rem;}
+nav ul a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;transition:color .2s;cursor:pointer;}
+nav ul a:hover{color:var(--gold);}
+
+/* BACK BUTTON */
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);
+  text-decoration:none;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:2rem;transition:gap .2s;}
+.back-btn:hover{gap:.8rem;color:var(--green-light);}
+
+/* HERO SECTION */
+.service-hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:8rem 2rem 4rem;text-align:center;
+  background:linear-gradient(to bottom,rgba(6,16,8,.88) 0%,rgba(12,32,16,.6) 55%,rgba(18,44,22,.28) 100%);}
+.service-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);
+  line-height:1.1;color:#fff;text-shadow:0 3px 30px rgba(0,0,0,.75);margin-bottom:1rem;}
+.service-hero p{font-size:1.1rem;color:rgba(255,255,255,.82);max-width:580px;margin:0 auto;}
+
+/* PAGE BODY */
+.page-body{background:transparent;}
+.section{margin:0 auto;max-width:1200px;padding:5rem 3rem;}
+
+.glass-panel{background:rgba(248,244,238,.92);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.7);border-radius:10px;padding:4rem;
+  box-shadow:0 12px 60px rgba(0,0,0,.35);}
+
+.glass-panel-dark{background:rgba(8,22,10,.93);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:4rem;
+  box-shadow:0 12px 60px rgba(0,0,0,.55);}
+
+/* TYPOGRAPHY */
+.section-label{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--green-mid);margin-bottom:.7rem;}
+.section-label-light{color:var(--gold);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--green-dark);margin-bottom:.9rem;}
+.section-title-light{color:#fff;}
+.section-desc{color:var(--text-mid);font-size:1rem;line-height:1.78;margin-bottom:2rem;}
+.divider{width:55px;height:3px;background:var(--gold);margin:1rem 0 2rem;}
+
+/* CONTENT LAYOUT */
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;}
+.content-text h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--green-dark);margin-bottom:1rem;}
+.content-text p{color:var(--text-mid);font-size:1rem;line-height:1.8;margin-bottom:1.5rem;}
+.content-image{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#d4c5a9 0%,#a89d8a 100%);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:rgba(255,255,255,.6);}
+
+/* FEATURES LIST */
+.features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
+.feature-item{padding:2rem;background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;}
+.feature-icon{font-size:2.5rem;margin-bottom:1rem;}
+.feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.7rem;}
+.feature-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;}
+
+/* CTA BUTTONS */
+.btn-primary{display:inline-block;padding:.9rem 2.6rem;background:var(--gold);color:#fff;
+  font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  border:none;cursor:pointer;transition:background .2s,transform .15s;margin-top:1.5rem;}
+.btn-primary:hover{background:#b07e2a;transform:translateY(-2px);}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:3rem 0;}
+.gallery-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:5px;cursor:pointer;}
+.gallery-item:hover img{transform:scale(1.06);}
+.gallery-overlay{position:absolute;inset:0;background:rgba(26,61,31,0);display:flex;align-items:flex-end;
+  padding:1rem;transition:background .3s;}
+.gallery-item:hover .gallery-overlay{background:rgba(26,61,31,.5);}
+.gallery-label{color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+  opacity:0;transition:opacity .3s;font-weight:700;}
+.gallery-item:hover .gallery-label{opacity:1;}
+.gallery-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#c9a869 0%,#a67c52 100%);
+  color:rgba(255,255,255,.7);font-size:.85rem;text-align:center;}
+
+/* TESTIMONIALS */
+.testimonial-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
+  border-radius:6px;padding:2rem;margin-bottom:1.5rem;}
+.testimonial-text{color:rgba(255,255,255,.85);font-size:1rem;line-height:1.8;
+  font-style:italic;margin-bottom:1.5rem;}
+.testimonial-author{display:flex;align-items:center;gap:1rem;}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--green-light);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;}
+.testimonial-name{color:#fff;font-weight:700;}
+.testimonial-title{color:rgba(255,255,255,.5);font-size:.85rem;}
+
+/* FOOTER */
+.grass-footer{position:relative;z-index:2;overflow:hidden;background:#06100a;}
+.footer-grass-bottom{background:#06100a;line-height:0;overflow:visible;padding-top:0.5rem;}
+.footer-body{background:#06100a;padding:3rem 4rem 0;}
+.footer-content{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2rem;
+  justify-content:space-between;align-items:flex-start;padding-bottom:3rem;
+  border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-brand .nav-logo{font-size:1.75rem;}
+.footer-tagline{color:rgba(255,255,255,.45);font-size:.83rem;margin-top:.5rem;}
+.footer-links h4{color:var(--gold);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem;}
+.footer-links ul{list-style:none;}
+.footer-links ul li{margin-bottom:.45rem;}
+.footer-links ul a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.footer-links ul a:hover{color:var(--gold);}
+.footer-bottom{background:#06100a;text-align:center;padding:1.25rem;font-size:.78rem;color:rgba(255,255,255,.25);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+/* MOBILE */
+@media(max-width:768px){
+  .content-grid{grid-template-columns:1fr;}
+  .section{padding:3.5rem 1.5rem;}
+  .glass-panel, .glass-panel-dark{padding:2rem 1.5rem;}
+}
+
+@media(max-width:640px){
+  nav{padding:.85rem 1.25rem;}
+  .nav-logo{font-size:1.2rem;}
+  .service-hero{padding:7rem 1.25rem 3rem;}
+  .service-hero h1{font-size:clamp(1.8rem,5vw,2.8rem);}
+  .section{padding:2.5rem 1.25rem;}
+  .glass-panel, .glass-panel-dark{padding:1.5rem;}
+  .section-title{font-size:clamp(1.5rem,4vw,2.2rem);}
+  .content-text h2{font-size:1.4rem;}
+  .feature-item{padding:1.5rem;}
+  .testimonial-card{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<nav>
+  <div class="nav-logo" onclick="window.location.href='index.html'">Rangel<span>.</span></div>
+  <ul>
+    <li><a onclick="window.location.href='index.html'">Home</a></li>
+    <li><a onclick="window.location.href='index.html#services'">Services</a></li>
+    <li><a onclick="window.location.href='index.html#portfolio'">Portfolio</a></li>
+    <li><a onclick="window.location.href='index.html#contact'">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="service-hero">
+  <a href="index.html#services" class="back-btn">← Back to Services</a>
+  <h1>Nursery & Garden Center</h1>
+  <p>Wide selection of quality plants, trees, and gardening supplies with expert guidance</p>
+</section>
+
+<div class="page-body">
+
+  <section class="section">
+    <div class="glass-panel">
+      <span class="section-label">What We Offer</span>
+      <h2>Professional Plant Selection & Garden Supplies</h2>
+      <div class="divider"></div>
+      
+      <div class="content-grid">
+        <div class="content-text">
+          <h2>Your One-Stop Garden Center</h2>
+          <p>Our nursery offers a carefully curated selection of tropical plants, native species, trees, shrubs, annuals, and perennials. We specialize in plants that thrive in local conditions and provide expert guidance on plant selection and care.</p>
+          <p>Our knowledgeable nursery specialist can help you find the perfect plants for your landscape, recommend species for specific conditions, and provide planting and care instructions. We also carry premium soil amendments, mulches, and gardening supplies.</p>
+          <p>Whether you're a seasoned gardener or just starting out, we have everything you need to create and maintain a beautiful landscape. Visit our nursery today or call for recommendations.</p>
+          <a href="index.html#contact" class="btn-primary">Visit Our Nursery</a>
+        </div>
+        <div class="content-image">
+          🌿 Garden Center
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="glass-panel">
+      <span class="section-label">What We Carry</span>
+      <h2 class="section-title">Plant & Supply Selection</h2>
+      <div class="divider"></div>
+      
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon">🌴</div>
+          <h3 class="feature-title">Tropical Plants</h3>
+          <p class="feature-desc">Wide selection of tropical and semi-tropical plants perfect for creating lush, vibrant landscapes in local climates.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌲</div>
+          <h3 class="feature-title">Trees & Shrubs</h3>
+          <p class="feature-desc">Shade trees, ornamental trees, evergreens, and flowering shrubs in various sizes for any landscape need.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌼</div>
+          <h3 class="feature-title">Annuals & Perennials</h3>
+          <p class="feature-desc">Seasonal flowers and long-lasting perennials for garden beds, containers, and landscape color.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🪴</div>
+          <h3 class="feature-title">Container Plants</h3>
+          <p class="feature-desc">Pre-planted containers and specimen plants perfect for patios, decks, and indoor gardening.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🥬</div>
+          <h3 class="feature-title">Vegetables & Herbs</h3>
+          <p class="feature-desc">Vegetable starts, herb plants, and organic gardening supplies for home growers.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🛠️</div>
+          <h3 class="feature-title">Gardening Supplies</h3>
+          <p class="feature-desc">Soil, mulch, fertilizers, tools, and accessories for all your gardening and landscaping needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="glass-panel-dark">
+      <span class="section-label section-label-light">In Stock Now</span>
+      <h2 class="section-title section-title-light">Plant & Supply Gallery</h2>
+      <div class="divider"></div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-overlay"><span class="gallery-label">Tropical Plants</span></div>
+          <div class="gallery-placeholder">🖼️ Tropical Selection</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-overlay"><span class="gallery-label">Trees & Shrubs</span></div>
+          <div class="gallery-placeholder">🖼️ Trees & Shrubs</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-overlay"><span class="gallery-label">Flowering Plants</span></div>
+          <div class="gallery-placeholder">🖼️ Flowers & Annuals</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-overlay"><span class="gallery-label">Garden Supplies</span></div>
+          <div class="gallery-placeholder">🖼️ Supplies & Soil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="glass-panel-dark">
+      <span class="section-label section-label-light">Customer Feedback</span>
+      <h2 class="section-title section-title-light">Testimonials</h2>
+      <div class="divider"></div>
+      
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Fantastic selection of plants and very helpful staff. They really know their plants and gave me great advice on what would work best in my landscape."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PG</div>
+          <div>
+            <div class="testimonial-name">Patricia Garcia</div>
+            <div class="testimonial-title">Gardening Enthusiast</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Best nursery in the area. Great plants, competitive prices, and the staff actually cares about helping you succeed with your garden."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RH</div>
+          <div>
+            <div class="testimonial-name">Robert Hall</div>
+            <div class="testimonial-title">Homeowner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="glass-panel">
+      <div style="text-align:center;">
+        <h2 class="section-title">Ready to Find the Perfect Plants?</h2>
+        <p class="section-desc">Visit our nursery today or contact us for plant recommendations and expert gardening advice.</p>
+        <a href="index.html#contact" class="btn-primary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="grass-footer">
+  <div class="footer-body">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="nav-logo">Rangel<span>.</span></div>
+        <p class="footer-tagline">Professional landscaping services</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a onclick="window.location.href='landscape-design.html'">Landscape Design</a></li>
+          <li><a onclick="window.location.href='tree-removal.html'">Tree Removal</a></li>
+          <li><a onclick="window.location.href='irrigation.html'">Irrigation</a></li>
+          <li><a onclick="window.location.href='lawn-care.html'">Lawn Care</a></li>
+          <li><a onclick="window.location.href='hardscapes.html'">Hardscapes</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a onclick="window.location.href='index.html'">Home</a></li>
+          <li><a onclick="window.location.href='index.html#services'">Services</a></li>
+          <li><a onclick="window.location.href='index.html#portfolio'">Portfolio</a></li>
+          <li><a onclick="window.location.href='index.html#contact'">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-grass-bottom">
+    <canvas id="grassCanvas" style="display:block;width:100%;height:140px;"></canvas>
+  </div>
+  <div class="footer-bottom">© 2024 Rangel Lawncare and Landscaping. All rights reserved.</div>
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('bgCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const STONE_COLORS = ['#3a4a42','#4a5a52','#5a6a62','#6a7a72','#2a3a32'];
+
+  let offscreen;
+
+  function seededRand(s){
+    let v = s>>>0;
+    return ()=>{ v=(Math.imul(1664525,v)+1013904223)>>>0; return v/0x100000000; };
+  }
+
+  function drawStone(c, s, sc){
+    const x = s.x * sc, y = s.y * sc;
+    const r = s.r * sc, a = s.a, gr = s.gr;
+    c.save();
+    c.translate(x, y);
+    c.rotate(a);
+    c.fillStyle = s.col;
+    c.beginPath();
+    c.ellipse(0, 0, r, r*0.65, 0, 0, Math.PI*2);
+    c.fill();
+    c.strokeStyle = 'rgba(0,0,0,.15)';
+    c.lineWidth = r*0.12;
+    c.stroke();
+    c.fillStyle = 'rgba(255,255,255,.08)';
+    c.beginPath();
+    c.ellipse(-r*0.3, -r*0.15, r*gr*0.4, r*gr*0.25, 0, 0, Math.PI*2);
+    c.fill();
+    c.restore();
+  }
+
+  function buildStones(pageH){
+    const rand = seededRand(42);
+    const stones = [];
+    const W = canvas.width;
+    for(let i=0;i<140;i++){
+      stones.push({
+        x: rand() * W,
+        y: rand() * pageH,
+        r: 12 + rand()*28,
+        a: rand() * Math.PI * 2,
+        gr: 0.3 + rand() * 0.7,
+        col: STONE_COLORS[Math.floor(rand()*STONE_COLORS.length)]
+      });
+    }
+    return stones;
+  }
+
+  function renderOffscreen(pageH){
+    const W = canvas.width, H = pageH;
+    if(!offscreen || offscreen.width !== W || offscreen.height !== H){
+      offscreen = document.createElement('canvas');
+      offscreen.width = W;
+      offscreen.height = H;
+    }
+    const oc = offscreen.getContext('2d');
+    const HALF_W = W / 2;
+    oc.fillStyle = '#13221a';
+    oc.fillRect(0, 0, W, pageH);
+
+    const sc = 1;
+    const stones = buildStones(pageH);
+
+    oc.strokeStyle = '#1a3820';
+    oc.lineWidth = HALF_W*2*sc + 14;
+    oc.lineCap = oc.lineJoin = 'round';
+    oc.stroke();
+
+    for (const s of stones) drawStone(oc, s, sc);
+
+    const vL=oc.createLinearGradient(0,0,W*.1,0);
+    vL.addColorStop(0,'rgba(4,10,5,.85)'); vL.addColorStop(1,'rgba(4,10,5,0)');
+    oc.fillStyle=vL; oc.fillRect(0,0,W,pageH);
+    const vR=oc.createLinearGradient(W,0,W*.9,0);
+    vR.addColorStop(0,'rgba(4,10,5,.85)'); vR.addColorStop(1,'rgba(4,10,5,0)');
+    oc.fillStyle=vR; oc.fillRect(0,0,W,pageH);
+  }
+
+  function draw() {
+    if (!offscreen) return;
+    const W=canvas.width, H=canvas.height, sy=window.scrollY;
+    ctx.clearRect(0,0,W,H);
+    ctx.drawImage(offscreen, 0,sy, W,H, 0,0, W,H);
+  }
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function rebuild() {
+    const pH = Math.max(document.body.scrollHeight, 2000);
+    resize();
+    renderOffscreen(pH);
+    draw();
+  }
+
+  window.addEventListener('scroll', draw, {passive:true});
+  window.addEventListener('resize', rebuild);
+  window.addEventListener('load', rebuild);
+  rebuild();
+  setTimeout(rebuild, 300);
+})();
+
+(function(){
+  const canvas = document.getElementById('grassCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const BLADE_COLORS = [
+    ['#122e16','#267030','#389040','#58c060'],
+    ['#163618','#2e7836','#44a84c','#68d070'],
+    ['#0e2410','#205c26','#2e7836','#4aac52'],
+    ['#1a4020','#34883c','#4ab054','#70dc7a'],
+  ];
+
+  function seededRand(s){
+    let v = s>>>0;
+    return ()=>{ v=(Math.imul(1664525,v)+1013904223)>>>0; return v/0x100000000; };
+  }
+
+  let blades = [];
+  function buildBlades(){
+    const W = canvas.width, H = canvas.height;
+    const rand = seededRand(99);
+    blades = [];
+    const layers = [
+      {count:60, hMin:0.30, hMax:0.52, wMin:4, wMax:9,  lean:0.15, palRange:[2,3]},
+      {count:80, hMin:0.55, hMax:0.90, wMin:3, wMax:7,  lean:0.20, palRange:[0,3]},
+    ];
+    layers.forEach(layer=>{
+      for(let i=0;i<layer.count;i++){
+        const x = rand() * W;
+        const h = (layer.hMin + rand()*(layer.hMax-layer.hMin)) * H;
+        const w = layer.wMin + rand()*(layer.wMax-layer.wMin);
+        const lean = (rand()-0.5) * layer.lean;
+        const speed = 0.6 + rand() * 0.9;
+        const phase = rand() * Math.PI * 2;
+        const amp = (0.8 + rand() * 1.4) * (Math.PI/180);
+        const palIdx = layer.palRange[0] + Math.floor(rand()*(layer.palRange[1]-layer.palRange[0]+1));
+        blades.push({x, h, w, lean, speed, phase, amp, palIdx});
+      }
+    });
+    blades.sort((a,b)=>a.h-b.h);
+  }
+
+  function drawBlade(x, baseY, h, w, totalLean, palIdx){
+    const colors = BLADE_COLORS[palIdx % BLADE_COLORS.length];
+    const tipX = x + totalLean * h;
+    const tipY = baseY - h;
+
+    const cp1x = x + totalLean * h * 0.3;
+    const cp1y = baseY - h * 0.5;
+    const cp2x = tipX - w * 0.25;
+    const cp2y = tipY + h * 0.18;
+    const cp3x = tipX + w * 0.25;
+    const cp3y = tipY + h * 0.18;
+
+    const grad = ctx.createLinearGradient(x, baseY, tipX, tipY);
+    grad.addColorStop(0, colors[0]);
+    grad.addColorStop(0.35, colors[1]);
+    grad.addColorStop(0.70, colors[2]);
+    grad.addColorStop(0.88, colors[3]);
+    grad.addColorStop(1.0, 'rgba(0,0,0,0)');
+
+    ctx.beginPath();
+    ctx.moveTo(x - w/2, baseY);
+    ctx.bezierCurveTo(cp1x - w/2, cp1y, cp2x, cp2y, tipX, tipY);
+    ctx.bezierCurveTo(cp3x, cp3y, cp1x + w/2, cp1y, x + w/2, baseY);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = Math.round(rect.width) || window.innerWidth;
+    canvas.height = Math.round(rect.height) || 140;
+    buildBlades();
+  }
+
+  let raf;
+  function render(ts){
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = '#06100a';
+    ctx.fillRect(0,0,W,H);
+
+    const t = ts * 0.001;
+    blades.forEach(b=>{
+      const sway = Math.sin(t * b.speed + b.phase) * b.amp;
+      drawBlade(b.x, H, b.h, b.w, b.lean + sway, b.palIdx);
+    });
+
+    ctx.fillStyle = '#06100a';
+    ctx.fillRect(0, H-6, W, 6);
+
+    raf = requestAnimationFrame(render);
+  }
+
+  window.addEventListener('resize', ()=>{
+    cancelAnimationFrame(raf);
+    resize();
+    raf = requestAnimationFrame(render);
+  });
+  resize();
+  raf = requestAnimationFrame(render);
+})();
+</script>
+</body>
+</html>

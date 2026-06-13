@@ -72,7 +72,13 @@ nav ul a:hover{color:var(--gold);}
 
 /* FEATURES LIST */
 .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
-.feature-item{padding:2rem;background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;}
+.feature-item{background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease;}
+.feature-item:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.12);}
+.feature-image-item{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#d4c5a9 0%,#a89d8a 100%);
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,.7);}
+.feature-image-item img{width:100%;height:100%;object-fit:cover;}
+.feature-content-item{padding:1.5rem;}
 .feature-icon{font-size:2.5rem;margin-bottom:1rem;}
 .feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.7rem;}
 .feature-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;}
@@ -168,7 +174,7 @@ nav ul a:hover{color:var(--gold);}
 <section class="service-hero">
   <a href="index.html#services" class="back-btn">← Back to Services</a>
   <h1>Full Service Tree Removal</h1>
-  <p>Professional tree removal, stump grinding, trimming, and maintenance services</p>
+  <p>Safe and professional tree removal, trimming, and shrub care services designed to protect and enhance your property.</p>
 </section>
 
 <!-- PAGE BODY -->
@@ -205,34 +211,46 @@ nav ul a:hover{color:var(--gold);}
       
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">✂️</div>
-          <h3 class="feature-title">Tree Removal</h3>
-          <p class="feature-desc">Safe and efficient removal of trees of any size, including hazardous, dead, or diseased trees. We handle the entire process from start to finish.</p>
+          <div class="feature-image-item">✂️</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Tree Removal</h3>
+            <p class="feature-desc">Safe and efficient removal of trees of any size, including hazardous, dead, or diseased trees. We handle the entire process from start to finish.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🪵</div>
-          <h3 class="feature-title">Stump Grinding</h3>
-          <p class="feature-desc">Complete stump removal using professional grinding equipment. We remove stumps below ground level for a clean finish.</p>
+          <div class="feature-image-item">🪵</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Stump Grinding</h3>
+            <p class="feature-desc">Complete stump removal using professional grinding equipment. We remove stumps below ground level for a clean finish.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🌿</div>
-          <h3 class="feature-title">Tree Trimming</h3>
-          <p class="feature-desc">Professional pruning and trimming to maintain tree health, improve appearance, and ensure safety around structures and power lines.</p>
+          <div class="feature-image-item">🌿</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Tree Trimming</h3>
+            <p class="feature-desc">Professional pruning and trimming to maintain tree health, improve appearance, and ensure safety around structures and power lines.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🏥</div>
-          <h3 class="feature-title">Tree Health Care</h3>
-          <p class="feature-desc">Disease treatment, pest management, and nutritional care to keep your trees healthy and thriving for years to come.</p>
+          <div class="feature-image-item">🏥</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Tree Health Care</h3>
+            <p class="feature-desc">Disease treatment, pest management, and nutritional care to keep your trees healthy and thriving for years to come.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🌱</div>
-          <h3 class="feature-title">Dead Wooding</h3>
-          <p class="feature-desc">Removal of dead branches and limbs to improve tree safety and appearance. Prevents hazardous branches from falling.</p>
+          <div class="feature-image-item">🌱</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Dead Wooding</h3>
+            <p class="feature-desc">Removal of dead branches and limbs to improve tree safety and appearance. Prevents hazardous branches from falling.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🚨</div>
-          <h3 class="feature-title">Emergency Services</h3>
-          <p class="feature-desc">24/7 emergency response for storm damage, fallen trees, and hazardous situations requiring immediate attention.</p>
+          <div class="feature-image-item">🚨</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Emergency Services</h3>
+            <p class="feature-desc">24/7 emergency response for storm damage, fallen trees, and hazardous situations requiring immediate attention.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -302,7 +320,7 @@ nav ul a:hover{color:var(--gold);}
     <div class="glass-panel">
       <div style="text-align:center;">
         <h2 class="section-title">Need Professional Tree Services?</h2>
-        <p class="section-desc">Contact us today for a free estimate on tree removal, trimming, or stump grinding.</p>
+        <p class="section-desc">Safe and skilled tree removal, trimming, and property maintenance services.</p>
         <a href="index.html#contact" class="btn-primary">Get Free Estimate</a>
       </div>
     </div>

@@ -72,7 +72,13 @@ nav ul a:hover{color:var(--gold);}
 
 /* FEATURES LIST */
 .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
-.feature-item{padding:2rem;background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;}
+.feature-item{background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease;}
+.feature-item:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.12);}
+.feature-image-item{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#d4c5a9 0%,#a89d8a 100%);
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,.7);}
+.feature-image-item img{width:100%;height:100%;object-fit:cover;}
+.feature-content-item{padding:1.5rem;}
 .feature-icon{font-size:2.5rem;margin-bottom:1rem;}
 .feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.7rem;}
 .feature-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;}
@@ -200,34 +206,46 @@ nav ul a:hover{color:var(--gold);}
       
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">🚚</div>
-          <h3 class="feature-title">Snow Plowing</h3>
-          <p class="feature-desc">Fast and efficient snow plowing for driveways, parking lots, and commercial properties. We clear snow quickly to restore access.</p>
+          <div class="feature-image-item">🚚</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Snow Plowing</h3>
+            <p class="feature-desc">Fast and efficient snow plowing for driveways, parking lots, and commercial properties. We clear snow quickly to restore access.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🧂</div>
-          <h3 class="feature-title">Ice Management</h3>
-          <p class="feature-desc">Professional salting and ice melt treatments for parking lots, walkways, and stairs. Pet and environmentally friendly options available.</p>
+          <div class="feature-image-item">🧂</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Ice Management</h3>
+            <p class="feature-desc">Professional salting and ice melt treatments for parking lots, walkways, and stairs. Pet and environmentally friendly options available.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🔨</div>
-          <h3 class="feature-title">Snow Stacking</h3>
-          <p class="feature-desc">Strategic snow placement and stacking for large parking areas and commercial properties. Proper removal at season end.</p>
+          <div class="feature-image-item">🔨</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Snow Stacking</h3>
+            <p class="feature-desc">Strategic snow placement and stacking for large parking areas and commercial properties. Proper removal at season end.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🚜</div>
-          <h3 class="feature-title">Sidewalk Clearing</h3>
-          <p class="feature-desc">Complete walkway and sidewalk snow removal to maintain safe pedestrian access. ADA compliant accessibility.</p>
+          <div class="feature-image-item">🚜</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Sidewalk Clearing</h3>
+            <p class="feature-desc">Complete walkway and sidewalk snow removal to maintain safe pedestrian access. ADA compliant accessibility.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">⏰</div>
-          <h3 class="feature-title">24/7 Emergency Response</h3>
-          <p class="feature-desc">Available around the clock for unexpected storms. Rapid response team ready to service your property day or night.</p>
+          <div class="feature-image-item">⏰</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">24/7 Emergency Response</h3>
+            <p class="feature-desc">Available around the clock for unexpected storms. Rapid response team ready to service your property day or night.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">📅</div>
-          <h3 class="feature-title">Seasonal Contracts</h3>
-          <p class="feature-desc">Flexible winter service packages including unlimited visits, priority service, and competitive season rates.</p>
+          <div class="feature-image-item">📅</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Seasonal Contracts</h3>
+            <p class="feature-desc">Flexible winter service packages including unlimited visits, priority service, and competitive season rates.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -294,7 +312,7 @@ nav ul a:hover{color:var(--gold);}
     <div class="glass-panel">
       <div style="text-align:center;">
         <h2 class="section-title">Need Snow Removal This Winter?</h2>
-        <p class="section-desc">Contact us today for a free quote on seasonal contracts or emergency storm response services.</p>
+        <p class="section-desc">Nursery and garden center services for all your landscaping plant and material needs.</p>
         <a href="index.html#contact" class="btn-primary">Get Snow Service Quote</a>
       </div>
     </div>

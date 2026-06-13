@@ -72,7 +72,13 @@ nav ul a:hover{color:var(--gold);}
 
 /* FEATURES LIST */
 .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
-.feature-item{padding:2rem;background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;}
+.feature-item{background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease;}
+.feature-item:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.12);}
+.feature-image-item{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#d4c5a9 0%,#a89d8a 100%);
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,.7);}
+.feature-image-item img{width:100%;height:100%;object-fit:cover;}
+.feature-content-item{padding:1.5rem;}
 .feature-icon{font-size:2.5rem;margin-bottom:1rem;}
 .feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.7rem;}
 .feature-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;}
@@ -178,7 +184,7 @@ nav ul a:hover{color:var(--gold);}
       <div class="content-grid">
         <div class="content-text">
           <h2>Expert Design & Installation</h2>
-          <p>Hardscapes are essential elements of a well-designed landscape. From elegant paver patios to sturdy retaining walls, we create functional and beautiful outdoor spaces that enhance your property's value and usability.</p>
+          <p>Custom patios, walkways, retaining walls, and outdoor hardscapes built with quality craftsmanship and lasting durability</p>
           <p>Our skilled craftsmen work with premium materials and proven installation techniques to ensure your hardscape features are built to last. We handle everything from design consultation through final installation and finishing touches.</p>
           <p>Whether you're looking to create an inviting patio, improve drainage with retaining walls, or add decorative elements, we bring your vision to life with expert craftsmanship.</p>
           <a href="index.html#contact" class="btn-primary">Get Hardscape Design</a>
@@ -198,34 +204,46 @@ nav ul a:hover{color:var(--gold);}
       
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">🛣️</div>
-          <h3 class="feature-title">Paver Patios</h3>
-          <p class="feature-desc">Custom-designed paver patios in various styles, colors, and patterns. Perfect for outdoor living, entertaining, and dining areas.</p>
+          <div class="feature-image-item">🛣️</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Paver Patios</h3>
+            <p class="feature-desc">Custom-designed paver patios in various styles, colors, and patterns. Perfect for outdoor living, entertaining, and dining areas.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🪜</div>
-          <h3 class="feature-title">Paver Steps</h3>
-          <p class="feature-desc">Professional installation of decorative and functional paver steps for landscape transitions and accent features.</p>
+          <div class="feature-image-item">🪜</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Paver Steps</h3>
+            <p class="feature-desc">Professional installation of decorative and functional paver steps for landscape transitions and accent features.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🧱</div>
-          <h3 class="feature-title">Retaining Walls</h3>
-          <p class="feature-desc">Structural retaining walls for erosion control, grade changes, and landscape definition using quality materials.</p>
+          <div class="feature-image-item">🧱</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Retaining Walls</h3>
+            <p class="feature-desc">Structural retaining walls for erosion control, grade changes, and landscape definition using quality materials.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🌳</div>
-          <h3 class="feature-title">Garden Borders</h3>
-          <p class="feature-desc">Decorative stone borders and edging to define garden beds, separate spaces, and create visual structure.</p>
+          <div class="feature-image-item">🌳</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Garden Borders</h3>
+            <p class="feature-desc">Decorative stone borders and edging to define garden beds, separate spaces, and create visual structure.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">💧</div>
-          <h3 class="feature-title">Drainage Solutions</h3>
-          <p class="feature-desc">Strategic hardscape placement and drainage design to manage water flow and prevent landscape issues.</p>
+          <div class="feature-image-item">💧</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Drainage Solutions</h3>
+            <p class="feature-desc">Strategic hardscape placement and drainage design to manage water flow and prevent landscape issues.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🎨</div>
-          <h3 class="feature-title">Custom Design</h3>
-          <p class="feature-desc">Personalized hardscape design that complements your home's architecture and landscape aesthetic.</p>
+          <div class="feature-image-item">🎨</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Custom Design</h3>
+            <p class="feature-desc">Personalized hardscape design that complements your home's architecture and landscape aesthetic.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -292,7 +310,7 @@ nav ul a:hover{color:var(--gold);}
     <div class="glass-panel">
       <div style="text-align:center;">
         <h2 class="section-title">Ready to Add Hardscapes to Your Landscape?</h2>
-        <p class="section-desc">Contact us today for a consultation and design proposal for your hardscape project.</p>
+        <p class="section-desc">Quality hardscape installations including patios, walkways, and outdoor structures.</p>
         <a href="index.html#contact" class="btn-primary">Schedule Hardscape Consultation</a>
       </div>
     </div>

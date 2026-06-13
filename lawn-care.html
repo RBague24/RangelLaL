@@ -72,7 +72,13 @@ nav ul a:hover{color:var(--gold);}
 
 /* FEATURES LIST */
 .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
-.feature-item{padding:2rem;background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;}
+.feature-item{background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease;}
+.feature-item:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.12);}
+.feature-image-item{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#d4c5a9 0%,#a89d8a 100%);
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,.7);}
+.feature-image-item img{width:100%;height:100%;object-fit:cover;}
+.feature-content-item{padding:1.5rem;}
 .feature-icon{font-size:2.5rem;margin-bottom:1rem;}
 .feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.7rem;}
 .feature-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;}
@@ -205,34 +211,46 @@ nav ul a:hover{color:var(--gold);}
       
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">✂️</div>
-          <h3 class="feature-title">Regular Mowing</h3>
-          <p class="feature-desc">Weekly or bi-weekly mowing with professional equipment. We maintain proper cutting heights and patterns for optimal lawn health.</p>
+          <div class="feature-image-item">✂️</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Regular Mowing</h3>
+            <p class="feature-desc">Weekly or bi-weekly mowing with professional equipment. We maintain proper cutting heights and patterns for optimal lawn health.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🌱</div>
-          <h3 class="feature-title">Weed Control</h3>
-          <p class="feature-desc">Targeted weed management programs including pre-emergent and post-emergent treatments to keep your lawn weed-free.</p>
+          <div class="feature-image-item">🌱</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Weed Control</h3>
+            <p class="feature-desc">Targeted weed management programs including pre-emergent and post-emergent treatments to keep your lawn weed-free.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">💉</div>
-          <h3 class="feature-title">Turf Treatments</h3>
-          <p class="feature-desc">Fertilization programs, insect control, and disease management to keep your lawn healthy and vibrant throughout the year.</p>
+          <div class="feature-image-item">💉</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Turf Treatments</h3>
+            <p class="feature-desc">Fertilization programs, insect control, and disease management to keep your lawn healthy and vibrant throughout the year.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">📋</div>
-          <h3 class="feature-title">Seasonal Programs</h3>
-          <p class="feature-desc">Spring, summer, fall, and winter care programs customized to your lawn's specific seasonal needs for year-round health.</p>
+          <div class="feature-image-item">📋</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Seasonal Programs</h3>
+            <p class="feature-desc">Spring, summer, fall, and winter care programs customized to your lawn's specific seasonal needs for year-round health.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🧹</div>
-          <h3 class="feature-title">Edging & Cleanup</h3>
-          <p class="feature-desc">Professional edging, blowing, and cleanup services to give your lawn crisp lines and a finished appearance.</p>
+          <div class="feature-image-item">🧹</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Edging & Cleanup</h3>
+            <p class="feature-desc">Professional edging, blowing, and cleanup services to give your lawn crisp lines and a finished appearance.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">💡</div>
-          <h3 class="feature-title">Expert Advice</h3>
-          <p class="feature-desc">Professional guidance on lawn care practices, watering schedules, and seasonal tips to maintain your lawn between visits.</p>
+          <div class="feature-image-item">💡</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Expert Advice</h3>
+            <p class="feature-desc">Professional guidance on lawn care practices, watering schedules, and seasonal tips to maintain your lawn between visits.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -302,7 +320,7 @@ nav ul a:hover{color:var(--gold);}
     <div class="glass-panel">
       <div style="text-align:center;">
         <h2 class="section-title">Ready for Professional Lawn Care?</h2>
-        <p class="section-desc">Contact us today to discuss a customized lawn maintenance program for your property.</p>
+        <p class="section-desc">Expert lawn maintenance and care services for healthy, vibrant properties year-round.</p>
         <a href="index.html#contact" class="btn-primary">Get Lawn Care Quote</a>
       </div>
     </div>

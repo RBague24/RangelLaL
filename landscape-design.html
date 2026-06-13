@@ -72,7 +72,13 @@ nav ul a:hover{color:var(--gold);}
 
 /* FEATURES LIST */
 .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0;}
-.feature-item{padding:2rem;background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;}
+.feature-item{background:#fff;border:1px solid rgba(196,180,154,.3);border-radius:8px;overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease;}
+.feature-item:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.12);}
+.feature-image-item{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#d4c5a9 0%,#a89d8a 100%);
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,.7);}
+.feature-image-item img{width:100%;height:100%;object-fit:cover;}
+.feature-content-item{padding:1.5rem;}
 .feature-icon{font-size:2.5rem;margin-bottom:1rem;}
 .feature-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.7rem;}
 .feature-desc{color:var(--text-mid);font-size:.95rem;line-height:1.7;}
@@ -184,7 +190,7 @@ nav ul a:hover{color:var(--gold);}
       <div class="content-grid">
         <div class="content-text">
           <h2>Expert Design From Vision to Reality</h2>
-          <p>Our team specializes in creating beautiful, functional landscapes tailored to your property and lifestyle. We start with a thorough consultation to understand your goals, preferences, and budget.</p>
+          <p>Custom landscape layouts, mulch installations, plant selection, and outdoor enhancements designed to elevate your property's curb appeal.</p>
           <p>From initial concept sketches to final installation, we handle every detail. We work with premium plants, materials, and techniques to ensure your landscape not only looks stunning but thrives for years to come.</p>
           <p>Whether you're looking for a peaceful retreat, a vibrant garden, or a modern outdoor living space, we bring your vision to life.</p>
           <a href="index.html#contact" class="btn-primary">Get a Free Consultation</a>
@@ -205,34 +211,46 @@ nav ul a:hover{color:var(--gold);}
       
       <div class="features-list">
         <div class="feature-item">
-          <div class="feature-icon">🎯</div>
-          <h3 class="feature-title">Concept & Design</h3>
-          <p class="feature-desc">Custom landscape designs tailored to your property, style, and budget. We create detailed plans before any installation begins.</p>
+          <div class="feature-image-item">🎯</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Concept & Design</h3>
+            <p class="feature-desc">Custom landscape designs tailored to your property, style, and budget. We create detailed plans before any installation begins.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🌱</div>
-          <h3 class="feature-title">Plant Selection</h3>
-          <p class="feature-desc">Expert guidance on plant selection. We choose plants that thrive and complement your design.</p>
+          <div class="feature-image-item">🌱</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Plant Selection</h3>
+            <p class="feature-desc">Expert guidance on plant selection. We choose plants that thrive and complement your design.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🔨</div>
-          <h3 class="feature-title">Professional Installation</h3>
-          <p class="feature-desc">Expert installation of all landscape elements including plants, sod, mulch, and hardscape features by our experienced crew.</p>
+          <div class="feature-image-item">🔨</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Professional Installation</h3>
+            <p class="feature-desc">Expert installation of all landscape elements including plants, sod, mulch, and hardscape features by our experienced crew.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🏗️</div>
-          <h3 class="feature-title">Site Preparation</h3>
-          <p class="feature-desc">Proper grading, soil preparation, and drainage design to ensure your landscape's long-term health and success.</p>
+          <div class="feature-image-item">🏗️</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Site Preparation</h3>
+            <p class="feature-desc">Proper grading, soil preparation, and drainage design to ensure your landscape's long-term health and success.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">💡</div>
-          <h3 class="feature-title">Creative Features</h3>
-          <p class="feature-desc">Integration of water features, seating areas, pathways, and lighting to create functional outdoor living spaces.</p>
+          <div class="feature-image-item">💡</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Creative Features</h3>
+            <p class="feature-desc">Integration of water features, seating areas, pathways, and lighting to create functional outdoor living spaces.</p>
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🎨</div>
-          <h3 class="feature-title">Color & Texture</h3>
-          <p class="feature-desc">Thoughtful color palettes and seasonal plant selections for year-round visual interest and beauty.</p>
+          <div class="feature-image-item">🎨</div>
+          <div class="feature-content-item">
+            <h3 class="feature-title">Color & Texture</h3>
+            <p class="feature-desc">Thoughtful color palettes and seasonal plant selections for year-round visual interest and beauty.</p>
+          </div>
         </div>
       </div>
     </div>
